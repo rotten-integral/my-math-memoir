@@ -1,6 +1,6 @@
 # Math Memoir
 
-This repository is a personal archive of my mathematics problem-solving journey, mostly documented in LaTeX.
+This repository is a personal archive of my mathematics problem-solving journey, documented in LaTeX.
 
 The motive behind the birth of this repo is to:
 - Maintain a structured, version-controlled collection of solved problems.
