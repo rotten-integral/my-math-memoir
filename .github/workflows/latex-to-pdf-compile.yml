@@ -1,4 +1,4 @@
-name: LaTeX PDF Build & Clean Deploy
+name: LaTeX PDF Build & Deploy
 
 on:
   push:
@@ -26,19 +26,16 @@ jobs:
 
     - name: Prepare PDF for deployment
       run: |
-        # Create a clean folder
         mkdir -p deploy
-        # Move the PDF into the deploy folder
         mv "My_Math_Memoir.pdf" deploy/
-        # Remove any other files from previous runs
         rm -rf deploy/*~ deploy/*.log deploy/*.aux
 
     - name: Deploy PDF to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v7
+      uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: deploy
         publish_branch: gh-pages
-        keep_files: false  # ensures old files are removed
+        keep_files: false
         user_name: github-actions
         user_email: github-actions@github.com
