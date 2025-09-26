@@ -2,7 +2,10 @@
 
 \input{tex/preamble.tex}
 \input{tex/macros.tex}
+
+% ---<<Annihilates all the blank pages>>--- 
 \let\cleardoublepage\clearpage
+
 % ---<<Title and Other Stuff>>---
 \title{\textbf{My Math Memoir}}
 \author{rotten $\int$ntegral *\\(Email: \texttt{anudeepprashantha@gmail.com})}
@@ -11,8 +14,11 @@
 \begin{document}
 \maketitle
     \tableofcontents
+
+	%Combinatorics
 	\chapter{Combinatorics}
 	\noindent Here are some of my recent solves from combinatorics which are majorly from olympiads. 
 	\include{tex/combinatorics/processes}
+	\include{tex/combinatorics/constructions}
 \end{document}
 
