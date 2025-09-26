@@ -48,7 +48,7 @@
 % ---<<tcolorbox Environments>>---
 
 % ---<<Claim Box>>---
-\newtcolorbox{claim}[1]{%
+\newtcolorbox{numclaim}[1]{%
 	colback=darkspringgreen!5!white,
 	colframe=darkspringgreen!5!white,
 	coltitle=darkspringgreen,
@@ -62,8 +62,8 @@
 	title={Claim #1.$\hspace{1mm}$}
 }
 
-% ---<<Claim Box without numbering>>---
-\newtcolorbox{claimnotnum}[1][]{%
+% ---<<Claim with numbering>>---
+\newtcolorbox{claim}[1][]{%
 	colback=darkspringgreen!5!white,
 	colframe=darkspringgreen!5!white,
 	coltitle=darkspringgreen,
@@ -92,7 +92,7 @@
 }
 
 % ---<<Lemma Box>>---
-\newtcolorbox{lemma}[2]{%
+\newtcolorbox{lemma}[1]{%
 	colback=peach-orange!5!white,
 	colframe=darkolivegreen!75!black,
 	coltitle=darkolivegreen!75!black,
@@ -102,7 +102,21 @@
 	boxrule=0.5pt,
 	sharp corners,
 	attach title to upper,
-	title={Lemma #1 \textmd{(#2)}.$\hspace{1mm}$}
+	title={Lemma #1.$\hspace{1mm}$}
+}
+
+% ---<<Proposition Box>>---
+\newtcolorbox{proposition}[1]{%
+	colback=peach-orange!5!white,
+	colframe=darkolivegreen!75!black,
+	coltitle=darkolivegreen!75!black,
+	fonttitle=\bfseries,
+	colbacktitle=peach-orange!5!white,
+	enhanced,
+	boxrule=0.5pt,
+	sharp corners,
+	attach title to upper,
+	title={Proposition #1.$\hspace{1mm}$}
 }
 
 % ---<<Example Box>>---
@@ -116,7 +130,7 @@
 	boxrule=0.5pt,
 	sharp corners,
 	attach title to upper,
-	title={Example #1 \textmd{(#2)}.$\hspace{1mm}$}
+	title={Example #1 \textmd{(#2)}.$\hspace{1mm}$\\}
 }
 
 % ---<<Remark Box>>---
@@ -158,7 +172,23 @@
   \noindent
   \textbf{\textcolor{persianindigo}{Problem #1}}$\hspace{1mm}$(\textcolor{frenchrose}{#2})\textbf{\textcolor{persianindigo}{.}}
   \noindent
+}{$\vspace{1cm}$}
+
+
+% ---<<Problem Environment>>---
+\newenvironment{solution}[]{%
+  \noindent
+  \textbf{Solution #1.$\hspace{1mm}$}
+  \noindent
 }{}
+
+
+% ---<<Proof Environment>>---
+\newenvironment{proof}{%
+  \noindent
+  \emph{Proof.$\hspace{1mm}$}
+  \noindent
+}{$\vspace{0.5cm}$}
 
 
 % ---<<QED Commands>>---
@@ -167,7 +197,7 @@
 
 
 % ---<<Section Numbering>>---
-%\renewcommand{\thechapter}{\textcolor{raspberry}{\arabic{chapter}}}
+\renewcommand{\thechapter}{\textcolor{raspberry}{\arabic{chapter}}}
 \renewcommand{\thesection}{\textcolor{raspberry}{\S}\textcolor{raspberry}{\arabic{section}}}
 \renewcommand{\thesubsection}{\textcolor{raspberry}{\thesection.\arabic{subsection}}}
 
