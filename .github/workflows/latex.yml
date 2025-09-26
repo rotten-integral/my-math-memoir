@@ -3,7 +3,11 @@ name: LaTeX to PDF and Deploy
 on:
   push:
     branches:
-      - main # Triggers the workflow on push to the 'main' branch
+      - main
+
+# 👈 ADD THIS BLOCK HERE
+permissions:
+  contents: write # This grants the necessary permission to commit/push
 
 jobs:
   build_pdf:
@@ -11,27 +15,22 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+      
       - name: Compile LaTeX document
-        # Using a popular LaTeX compilation action
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: My_Math_Memoir.tex # Replace with the name of your main .tex file
-          # Optional: You can specify the compiler, e.g., 'xelatex' or 'lualatex'
-          # compiler: pdflatex 
-
+          root_file: My_Math_Memoir.tex 
+      
       - name: Upload PDF to Artifacts (Optional)
-        # Saves the PDF as a workflow artifact, accessible in the Actions tab
         uses: actions/upload-artifact@v4
         with:
           name: compiled-pdf
-          path: My_Math_Memoir.pdf # Replace with the name of your compiled PDF
-
+          path: My_Math_Memoir.pdf
+      
       - name: Commit and Push PDF to Repository
-        # This step is crucial for deployment via GitHub Pages
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add -f main.pdf # Adds the generated PDF file
+          git add -f main.pdf
           git commit -m "Build PDF from LaTeX update" || echo "No changes to commit"
           git push
