@@ -21,7 +21,7 @@
 \subsection{Solutions}
 \begin{problem}{1}{\href{https://artofproblemsolving.com/community/q1h3107334p34892180}{IMO Shortlist C1, 2022}} 
 A $\pm 1$-sequence is a sequence of $2022$ numbers $a_1, \ldots, a_{2022},$ each equal to either $+1$ or $-1$. Determine the largest $C$ so that, for any $\pm 1$-sequence, there exists an integer $k$ and indices $1 \le t_1 < \ldots < t_k \le 2022$ so that $t_{i+1} - t_i \le 2$ for all $i$, and$$\left| \sum_{i = 1}^{k} a_{t_i} \right| \ge C.$$
-	\begin{solution} We claim that the optimal value of $C$ is $506$.\\
+	\begin{solution}{} We claim that the optimal value of $C$ is $506$.\\
 Constructing a sequence that gives an upper bound of $506$ on $C$ is very natural. Consider the sequence,
 $$\textcolor{blue}{1},\textcolor{blue}{1}, \textcolor{red}{-1}, \textcolor{red}{-1}, \textcolor{blue}{1},\textcolor{blue}{1}, \textcolor{red}{-1}, \textcolor{red}{-1},\ldots, \textcolor{blue}{1},\textcolor{blue}{1}, \textcolor{red}{-1}, \textcolor{red}{-1},\textcolor{blue}{1}, \textcolor{red}{-1}.$$There are $505$ copies of $1,1,-1, -1$ chunks with an anomaly at the end. Say we want to maximise the number of $1$s in the list, then we must have at least $507$ more $1$s than $-1$s and this is impossible as appending a $1$ in our list comes at the cost of appending a $-1$ unless we are yet to start.\\
 
@@ -38,7 +38,7 @@ $$\left|\sum_{1\le i\le k}a_{t_i}\right|\ge 506 \qquad\text{with $t_{i+1}-t_i\le
 
 \begin{problem}{2}{\href{https://artofproblemsolving.com/community/q1h3483100p34496847}{India P5, 2025}}
 	Greedy goblin Griphook has a regular $2000$-gon, whose every vertex has a single coin. In a move, he chooses a vertex, removes one coin each from the two adjacent vertices, and adds one coin to the chosen vertex, keeping the remaining coin for himself. He can only make such a move if both adjacent vertices have at least one coin. Griphook stops only when he cannot make any more moves. What is the maximum and minimum number of coins he could have collected?
-	\begin{solution} We claim Griphook can pick a maximum of $1998$ coins and a minimum of $668$ coins.
+	\begin{solution}{} We claim Griphook can pick a maximum of $1998$ coins and a minimum of $668$ coins.
 We prove a more general proposition: that given any $n$-gon for $n\ge 3$, Griphook can pick at most $n-2$ coins and the minimizing case is a bit tricky given by the following formula,
 	$$\text{Minimum number of coins Griphook must pick}=
 	\begin{cases}
@@ -56,7 +56,7 @@ We prove a more general proposition: that given any $n$-gon for $n\ge 3$, Gripho
 \begin{problem}{3}{\href{https://artofproblemsolving.com/community/q1h2883211p34203276}{IMO P1, 2022}}
 	The Bank of Oslo issues two types of coin: aluminum (denoted A) and bronze (denoted B). Marianne has $n$ aluminum coins and $n$ bronze coins arranged in a row in some arbitrary initial order. A chain is any subsequence of consecutive coins of the same type. Given a fixed positive integer $k \leq 2n$, Gilberty repeatedly performs the following operation: he identifies the longest chain containing the $k^{th}$ coin from the left and moves all coins in that chain to the left end of the row. For example, if $n=4$ and $k=4$, the process starting from the ordering $AABBBABA$ would be $AABBBABA \to BBBAAABA \to AAABBBBA \to BBBBAAAA \to ...$\\
 	Find all pairs $(n,k)$ with $1 \leq k \leq 2n$ such that for every initial ordering, at some moment during the process, the leftmost $n$ coins will all be of the same type.
-	\begin{solution} We claim that $(n,k)$ is such a pair if and only if it is contained in the following set defined as,
+	\begin{solution}{} We claim that $(n,k)$ is such a pair if and only if it is contained in the following set defined as,
 $$S=\bigg\{(n,k)\in\mathbb{Z}_{\ge 1}^2\bigg\lvert n\le k\le n+\bigg\lceil\cfrac{n}{2}\bigg\rceil\bigg\}$$Firstly note that for $k<n$ we can construct a counter sequence of coins which shows that the final state cannot be achieved;
 $$\underbrace{A\ldots A}_{\text{$n-1$ $A$'s}}\underbrace{C\ldots C}_{\text{$n-1$ $C$'s}}AC.$$
 	\indent Similarly we show that $k\le n+\lceil n/2\rceil$ by constructing the sequence which loops to itself every time it completes a cycle. Also, to keep things neat and clean denote the contiguous string of coins of the same metal $M$ of size $\#$ as $M^{\#}$, consider the sequence;
@@ -69,7 +69,7 @@ $$A^{\big\lfloor\frac{n}{2}\big\rfloor} C^{\big\lceil\frac{n}{2}\big\rceil} A^{\
 	
 \begin{problem}{4}{\href{https://artofproblemsolving.com/community/q1h1578516p32946994}{India P5, 2018}}
 	There are $n\ge 3$ girls in a class sitting around a circular table, each having some apples with her. Every time the teacher notices a girl having more apples than both of her neighbours combined, the teacher takes away one apple from that girl and gives one apple each to her neighbours. Prove that, this process stops after a finite number of steps. (Assume that, the teacher has an abundant supply of apples.)
-	\begin{solution} Let $\mathcal{G}$ denote the set of girls $g_i$ where $i=1,2,\ldots,n $ and let $\alpha_j(g)$ denote the number of apples with $g$ after $j^{\text{th}}$ iteration for $j=0,1,\ldots,n$.\\
+	\begin{solution}{} Let $\mathcal{G}$ denote the set of girls $g_i$ where $i=1,2,\ldots,n $ and let $\alpha_j(g)$ denote the number of apples with $g$ after $j^{\text{th}}$ iteration for $j=0,1,\ldots,n$.\\
 	Something cool pops up when we study the extremal object $\displaystyle\max_{g\in\mathcal{G}}\alpha_j{(g)}$.
 
 	\begin{lemma}{1}{Monovariant Property}
