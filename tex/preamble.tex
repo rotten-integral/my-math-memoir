@@ -169,18 +169,25 @@
 
 % ---<<Problem Environment>>---
 \newenvironment{problem}[2]{%
-  \noindent
+  \noindent\newline
   \textbf{\textcolor{persianindigo}{Problem #1}}$\hspace{1mm}$(\textcolor{frenchrose}{#2})\textbf{\textcolor{persianindigo}{.}}
   \noindent
 }{$\vspace{1cm}$}
 
 
-% ---<<Problem Environment>>---
+% ---<<Solution Environment>>---
+\newenvironment{solution}{%
+  \noindent\newline
+  \textbf{Solution.$\hspace{1mm}$}
+  \noindent
+}{}
+
+% ---<<Numbered Solution Environment>>---
 \newenvironment{solution}[1]{%
   \noindent
   \textbf{Solution #1.$\hspace{1mm}$}
   \noindent
-}{}
+}{$\vspace{1cm}$}
 
 
 % ---<<Proof Environment>>---
