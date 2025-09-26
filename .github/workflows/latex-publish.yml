@@ -1,40 +1,33 @@
-name: Build and Commit PDF
+name: CI
 
 on:
   push:
-    branches:
-      - main
+  release:
+    types: [published]
 
 jobs:
-  build-and-publish:
+  build-test:
     runs-on: ubuntu-latest
-
     steps:
-      # 1. Checkout repo
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Generate Book PDF
+        uses: hspaans/latexmk-action@v2.0.0
         with:
-          persist-credentials: true  # required for pushing back
+          format: pdf
+          filename: My Math Memoir.tex
 
-      # 2. Compile LaTeX
-      - name: Compile LaTeX
-        uses: xu-cheng/latex-action@v3
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
         with:
-          root_file: My Math Memoir.tex
+          name: compiled-book
+          path: My Math Memoir.pdf
 
-      # 3. Create pdf folder if it doesn't exist
-      - name: Make pdf folder
-        run: mkdir -p pdf
-
-      # 4. Move PDF into pdf folder
-      - name: Move PDF
-        run: mv My Math Memoir.pdf pdf/My Math Memoir.pdf
-
-      # 5. Commit and push back to repo
-      - name: Commit PDF
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add pdf/My Math Memoir.pdf
-          git commit -m "Update compiled PDF [skip ci]" || echo "No changes to commit"
-          git push
+      - name: Upload to Release (Release Only)
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            main.pdf
+          token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
