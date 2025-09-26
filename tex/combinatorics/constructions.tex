@@ -1,0 +1,284 @@
+\section{Constructions}
+\subsection{Problems}
+\begin{problem}{1}{\href{https://artofproblemsolving.com/community/c6h1989008p34732913}{India P3, 2020}}
+	Let $S$ be a subset of $\{0,1,2,\dots ,9\}$. Suppose there is a positive integer $N$ such that for any integer $n>N$, one can find positive integers $a,b$ so that $n=a+b$ and all the digits in the decimal representations of $a,b$ (expressed without leading zeros) are in $S$. Find the smallest possible value of $|S|$.
+\end{problem}
+
+
+\begin{problem}{2}{\href{https://otis.evanchen.cc/arch/SASHAOPT/}{Sleepy Students $-$ OTIS}} 
+	There are $n$ sleepy students working on a morning constest. The contest  has six problems, and the score on each problem is a non negative integer less than or equal to $10$. Given that no two students got the same score on two or more problems, what is the greatest possible value of $n$?
+\end{problem}
+
+
+\begin{problem}{3}{\href{https://artofproblemsolving.com/community/c6h627236p3763526}{RMM P1, 2015}}
+	Does there exist an infinite sequence of postivie integers $a_1, a_2, \ldots$ such that $\gcd(a_m, a_n)=1$ if and only if $|m-n|=1$?
+\end{problem}
+
+
+\begin{problem}{4}{\href{https://artofproblemsolving.com/community/c6h2876405p34326572}{Junior Balkan Shortlist C2, 2021}}
+	Let $n$ be a positive integer. We are given a $3n \times 3n$ board whose unit squares are colored in black and white in such way that starting with the top left square, every third diagonal is colored in black and the rest of the board is in white. In one move, one can take a $2 \times 2$ square and change the color of all its squares in such way that white squares become orange, orange ones become black and black ones become white. Find all $n$ for which, using a finite number of moves, we can make all the squares which were initially black white, and all squares which were initially white black.
+\end{problem}
+
+
+\begin{problem}{5}{\href{}{India P4, 2025}}
+	Let $n\ge 3$ be a positive integer. Find the largest real number $t_n$ as a function of $n$ such that the inequality
+\[\max\left(|a_1+a_2|, |a_2+a_3|, \dots ,|a_{n-1}+a_{n}| , |a_n+a_1|\right) \ge t_n \cdot \max(|a_1|,|a_2|, \dots ,|a_n|)\]holds for all real numbers $a_1, a_2, \dots , a_n$.
+\end{problem}
+
+
+\begin{problem}{6}{\href{https://artofproblemsolving.com/community/c6h2718707p34335433}{Coluring Numbers Efficiently-Kithun}}
+	What is the least number required to colour the integers $1, 2,\ldots,2^{n}-1$ such that for any set of consecutive integers taken from the given set of integers, there will always be a colour colouring exactly one of them? That is, for all integers $i, j$ such that $1\le i\le j\le 2^{n}-1$, there will be a colour coloring exactly one integer from the set $i, i+1,\ldots, j-1, j$.
+\end{problem}
+
+
+\begin{problem}{7}{Ahan Chakraborty-Unknown}
+	Let $n\in \mathbb{N}$. Let $X=\{1,2,3,...,n^2\}.$Let $A\subset X$ with $|A| = n$. Prove that $X\setminus A$ contains an arithmetic progression with $n$ terms.
+\end{problem}
+
+
+\begin{problem}{8}{\href{}{IM0 P2, 2014}}
+	Let $n\ge 2$ be an integer. Consider an $n\times n$ chessboard consisting of $n^2$ unit squares. A configuration of $n$ rooks is \emph{peaceful} if every row and every column contains exactly one rook. Find the greatest positive integer $k$ such that, for each peaceful configuration of $n$ rooks, there is a $k\times k$ square which does not contain a rook on any its $k^2$ unit squares.
+\end{problem}
+
+
+\newpage
+\subsection{Solutions}
+\begin{problem}{1}{\href{https://artofproblemsolving.com/community/c6h1989008p34732913}{India P3, 2020}}
+	Let $S$ be a subset of $\{0,1,2,\dots ,9\}$. Suppose there is a positive integer $N$ such that for any integer $n>N$, one can find positive integers $a,b$ so that $n=a+b$ and all the digits in the decimal representations of $a,b$ (expressed without leading zeros) are in $S$. Find the smallest possible value of $|S|$.
+	\begin{solution} We claim $\min |S|=5$, which can be achieved by taking $S=\{0,1,2,3,7\}$.\\
+
+	\noindent\textcolor{darkolivegreen}{\textbf{Why Does the Construction Work?}} Note that sum of pairs of elements (not necessarily distinct) of $S$ generate the whole residue class modulo $10$,
+	\begin{center}\begin{tabular}{c| c c  c c c}
+& 0 & 1 & 2 & 3 & 7\\
+\hline
+0 & \textcolor{red}{\textbf{0}} & \textcolor{red}{\textbf{1}} & \textcolor{red}{\textbf{2}} & 3 & \textcolor{red}{\textbf{7}}\\ 
+1 & $\cdot$ & 2 & \textcolor{red}{\textbf{3}} & 4 & \textcolor{red}{\textbf{8}}\\ 
+2 & $\cdot$ & $\cdot$ & \textcolor{red}{\textbf{4}} & \textcolor{red}{\textbf{5}} & \textcolor{red}{\textbf{9}}\\ 
+3 & $\cdot$ & $\cdot$ & $\cdot$ & \textcolor{red}{\textbf{6}} & 0\\ 
+7 & $\cdot$ & $\cdot$ & $\cdot$ & $\cdot$ & 4\\ 
+\end{tabular}\end{center}
+	\indent The nice thing about the construction is that it makes sure there's no carrying-over stuff, so we may choose each digit of $a$ and $b$ independently. For example, say we want to generate the number $59078294316$, we simple choose $a,b$ according to the above table
+	\begin{center}\begin{tabular}{c c c c c c c c c c c c}
+        & 2 & 2 & 0 & 0 & 1 & 0 & 2 & 2 & 1 & 0 & 3\\
+$+$ & 3 & 7 & 0 & 7 & 7 & 2 & 7 & 2 & 2 & 1 & 3\\
+\hline
+& \textbf{5} & \textbf{9} & \textbf{0} & \textbf{7} & \textbf{8} & \textbf{2} & \textbf{9} & \textbf{4} & \textbf{3} & \textbf{1} & \textbf{6}
+\end{tabular}\end{center}
+	\noindent \emph{Note.} In fact we get $N=1$ which is cool.\\
+
+	\noindent\textcolor{darkolivegreen}{\textbf{Establishing the Lower Bound.}} We shall show that $|S|>4$. Suppose there exists a single digit number $d$ such that $s_1+s_2\not\equiv d\pmod{10}$ for each $(s_1, s_2)\in S\times S$ then we will not be able to generate
+$$\underbrace{\overline{\text{**}\ldots\text{*}d}}_{\text{take sufficiently large number}}$$as a sum of $a,b$. Hence it must be that,
+$$\{s_1+s_2\pmod{10} \mid s_1,s_2\in S\}=\mathbb{Z}_{10}\quad\text{meaning,}\quad \binom{|S|}{2}+|S|\ge 10.$$From the above mentioned bound it is quite clear that $|S|\ge 4$, so we are left to show that $|S|\ne 4$. Suppose $S=\{s_1,s_2,s_3,s_4\}$, notice $2s_i\pmod {10}$ generates four distinct even numbers among $\mathbb{Z}_{10}$. So either exactly one element of $S$ is even or all are odd, the latter implies $s_i+s_j$ is even for $i\ne j$ meaning the number of even numbers generated exceeds $10/2$ which is ridiculous. Similarly, we argue that the former case is also not possible, therefore $|S|>4$ and we are done. $\qedwhite$
+
+	\end{solution}
+\end{problem}
+
+
+\begin{problem}{2}{\href{https://otis.evanchen.cc/arch/SASHAOPT/}{Sleepy Students $-$ OTIS}}
+	There are $n$ sleepy students working on a morning constest. The contest  has six problems, and the score on each problem is a non negative integer less than or equal to $10$. Given that no two students got the same score on two or more problems, what is the greatest possible value of $n$?
+	\begin{solution} The answer is $121$.\\
+	\indent By pigeonhole principle it is evident that $n$ is atmost $121$. And fortunately by the virtue of this artificial setup, there exists a construction for $n=121$ $-$ consider the scores of each student to be an arithmetic progression of course under modulo $11$. There are $11$ choices each for the intial term and the common difference hence making $11\times 11=121$ of them.\\
+	
+	\noindent\textbf{\textcolor{darkolivegreen}{But how are we sure that no two of them have two or more coinciding terms?}} Suppose some two different arithmetric progressions namely, $\{a, a+d, \ldots, a+5d\}$ and $\{a', a'+d', \ldots, a'+5d'\}$ have two coinciding terms say $a+nd=a'+nd'$ and $a+md=a'+md'$ with $0\le n\ne m\le 5$. As $11$ is prime, by cancellation law we have that $n\equiv m$ which is a contradiction and we are done. $\qedwhite$\\
+
+	\begin{remark}[title=Confession.$\hspace{1mm}$] 
+	I had to look up the ARCH for hints regarding the construction.
+	\end{remark}
+	\end{solution}
+\end{problem}
+
+
+\begin{problem}{3}{\href{https://artofproblemsolving.com/community/c6h627236p3763526}{RMM P1, 2015}}
+	Does there exist an infinite sequence of postivie integers $a_1, a_2, \ldots$ such that $\gcd(a_m, a_n)=1$ if and only if $|m-n|=1$?
+	\begin{solution} The answer is yes.\\
+		Denote  the $n^{\text{th}}$ prime number as $p_n$. Consider the following construction $-$
+		\begin{center}\begin{tabular}{c | c c c c c c c c c c}
+			& $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ & $a_7$ & $a_8$ & $a_9$ & $a_{10}$ \\\hline
+			$p_1$ & $\bullet$ & & $\bullet$ & & $\bullet$ & & $\bullet$ & & $\bullet$ & \\
+			$p_2$ & & $\bullet$ & & $\bullet$ & & $\bullet$ & & $\bullet$ & & $\bullet$\\
+			$p_3$ & $\bullet$ & & & $\bullet$ & & $\bullet$ & & $\bullet$ & & $\bullet$ \\
+			$p_4$ & & $\bullet$ & & & $\bullet$ & & $\bullet$ & & $\bullet$ & \\
+			$p_5$ & & & $\bullet$ & &  & $\bullet$ & & $\bullet$ & & $\bullet$ \\
+			$p_6$ & & & & $\bullet$ & & & $\bullet$ & & $\bullet$ & \\
+			$p_7$ & & & & & $\bullet$ & & & $\bullet$ & & $\bullet$ \\
+			$p_8$ & & & & & & $\bullet$ & & & $\bullet$& \\
+			$p_9$ & & & & & & & $\bullet$ & & & $\bullet$ \\
+			$p_{10}$ & & & & & & & & $\bullet$ & &  \\
+
+
+		\end{tabular}\\
+	\text{proof with little to no words}\footnote{Here a `$\bullet$' is at some position $(i, j)$ if and only if $p_i\lvert a_j$.}\end{center}
+
+	\noindent Clearly each $a_n$ is finite and satisfy the hypothesis. $\qedwhite$
+	\end{solution}
+\end{problem}
+	
+
+\begin{problem}{4}{\href{https://artofproblemsolving.com/community/c6h2876405p34326572}{Junior Balkan Shortlist C2, 2021}} 
+	Let $n$ be a positive integer. We are given a $3n \times 3n$ board whose unit squares are colored in black and white in such way that starting with the top left square, every third diagonal is colored in black and the rest of the board is in white. In one move, one can take a $2 \times 2$ square and change the color of all its squares in such way that white squares become orange, orange ones become black and black ones become white. Find all $n$ for which, using a finite number of moves, we can make all the squares which were initially black white, and all squares which were initially white black.
+	\begin{solution} The desired end state can be acheived if and only if $n$ is even.
+		\begin{proposition}{1}A square which was initially black should be subjected to $1\pmod{3}$ moves and $2\pmod{3}$ moves if the concerning square was white initially inorder to attain the end state.
+		\end{proposition}
+	Define score of a $2\times 2$ square as the number of times it has been chosen throughout. Observe the top row closely, the rightmost $2\times 2$ square must have a score which is $1\pmod {3}$, so this forces the next square to the left to have a score that is $1\pmod{3}$ and so on till we reach the left most square. Denote black squares as $B$, white square as $W$ and orange squares as $O$. For example consider $n=3$, the scores of squares in the top rows modulo $3$ arranged in order must look like,
+$$
+	\begin{bmatrix}
+		\underline{\hspace{0.3cm}} & \textcolor{red}{1} & \textcolor{red}{1} & \textcolor{red}{0} & \textcolor{red}{2} & \textcolor{red}{0} & \textcolor{red}{1} & \textcolor{red}{1} & \textcolor{red}{1}\\
+		W & W & B & W & W & B & W & W & B\\
+		W & B & W & W & B & W & W & B & W\\
+		B & W & W & B & W & W & B & W & W\\
+		\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots\\
+		B & W & W & B & W & W & B & W & W
+	\end{bmatrix}.
+$$
+	\begin{mycases}
+	\item When $n$ is odd.\\
+Considering the previous example, note the top-left most square cannot turn black at the end of the process no matter what. This is because the score of the only square it is a part of is $1\pmod{3}$. By induction we can easily show this holds for all odd $n$. Which means the first row itself can never reach the end state. Not to mention, one can easily show the case $n=1$ does not work.
+
+		\item When $n$ is even.\\
+It would suffice to show that end state can be acheived for $6\times 6$ grid as the successive grids $12\times 12, 18\times 18$ and so can be partitioned into $6\times 6$ grids that repeat themselves. The algorithm is, flip the colours of a rows one at a time starting from the top then traversing till the bottom.
+$$ 
+\begin{bmatrix}
+		W & W & B & W & W & B\\
+		W & B & W & W & B & W\\
+		B & W & W & B & W & W\\
+		W & W & B & W & W & B\\
+		W & B & W & W & B & W\\
+		B & W & W & B & W & W
+	\end{bmatrix} \to\begin{bmatrix}
+		B & B & W & B & B & W\\
+		B & O & O& B & O & O\\
+		B & W & W & B & W & W\\
+		W & W & B & W & W & B\\
+		W & B & W & W & B & W\\
+		B & W & W & B & W & W
+	\end{bmatrix} \to \begin{bmatrix}
+		B & B & W & B & B & W\\
+		B & W & B & B & W & B\\
+		B & B & O & B & B & O\\
+		W & W & B & W & W & B\\
+		W & B & W & W & B & W\\
+		B & W & W & B & W & W
+	\end{bmatrix}
+$$$$
+	\to \begin{bmatrix}
+		B & B & W & B & B & W\\
+		B & W & B & B & W & B\\
+		W & B & B & W & B & B\\
+		O & W & W & O & W & W\\
+		W & B & W & W & B & W\\
+		B & W & W & B & W & W
+	\end{bmatrix} \to \begin{bmatrix}
+		B & B & W & B & B & W\\
+		B & W & B & B & W & B\\
+		W & B & B & W & B & B\\
+		B & B & W & B & B & W\\
+		O & O & W & O & O & W\\
+		B & W & W & B & W & W
+	\end{bmatrix}\to\begin{bmatrix}
+		B & B & W & B & B & W\\
+		B & W & B & B & W & B\\
+		W & B & B & W & B & B\\
+		B & B & W & B & B & W\\
+		B & W & B & B & W & B\\
+		W & B & B & W & B & B
+	\end{bmatrix}. $$
+\end{mycases}
+Longing turned to having. $\qedwhite$
+
+	\end{solution}
+\end{problem} 
+
+	
+\begin{problem}{5}{\href{}{India P4, 2025}}
+	Let $n\ge 3$ be a positive integer. Find the largest real number $t_n$ as a function of $n$ such that the inequality
+\[\max\left(|a_1+a_2|, |a_2+a_3|, \dots ,|a_{n-1}+a_{n}| , |a_n+a_1|\right) \ge t_n \cdot \max(|a_1|,|a_2|, \dots ,|a_n|)\]holds for all real numbers $a_1, a_2, \dots , a_n$.
+	\begin{solution} We claim $t_n=0$ when $n$ is even and $t=2/n$ otherwise.\\
+	The case when $n$ is even is trivial because of the following construction,
+$$(a_1,a_2,\ldots,n)=(1,-1,\ldots,-1).$$
+	Which gives $t_n=0$.\\
+	\indent Now we deal with the case when $n$ is odd. The central theme of the solution is to exploit the triangle inequality, by which we have
+\begin{align*}
+		n\cdot\max_{1\le i<n}\big\{|a_i+a_{i+1}|, |a_n+a_{1}|\big\} &\ge |(a_n+a_1)|+\sum_{1\le i<n}|(a_{i}+a_{i+1})|\\
+		&\ge 2\max_{1\le i\le n}|a_i|
+	\end{align*}
+		So we have a nice lower bound for $t_n$ which is $t\ge 2/n$, and fortunate enough this is the upper bound as well. Consider the construction that make sures $\displaystyle \max_{1\le i<n}\big\{|a_i+a_{i+1}|, |a_n+a_{1}|\big\}=2$,
+$$(a_1,a_2,\ldots,a_n)=(1,-3,5,\ldots,(-1)^{\frac{n-1}{2}}n,\ldots,5,-3,1).$$
+	$\qedwhite$
+
+	\end{solution}
+\end{problem}
+
+	
+\begin{problem}{6}{\href{https://artofproblemsolving.com/community/c6h2718707p34335433}{Coluring Numbers Efficiently-Kithun}}
+	What is the least number required to colour the integers $1, 2,\ldots,2^{n}-1$ such that for any set of consecutive integers taken from the given set of integers, there will always be a colour colouring exactly one of them? That is, for all integers $i, j$ such that $1\le i\le j\le 2^{n}-1$, there will be a colour coloring exactly one integer from the set $i, i+1,\ldots, j-1, j$.
+	\begin{solution} Denote the minimum number of colours required to colour the integers $1,2,\dots,2^n-1$ such that for any set of consecutive integers taken from the given set of integers, there will always be a colour colouring exactly one of them as $\chi_n$. For convenience call a colouring 
+\emph{minimally-valid} if the colouring is ``valid'' and uses only $\chi_n$ different colours. The key idea is to come up with good enough non-trivial bounds on $\chi_n$. If we are lucky, the lower bound might turn out to be the same as that of the upper bound and we win.\\
+	\indent Before jumping into the details of $\chi_n$, let us try colouring the numbers $1,2,\dots,2^4-1$ (base case being $n=3$ is rather trivial giving us little to no insights), maybe we can come up with a nice construction that could be generalised easily.
+\[
+\textcolor{blue}{1}\;\;
+\textcolor{orange}{2}\;\;
+\textcolor{green!60!black}{3}\;\;
+\textcolor{red}{4}\;\;
+\textcolor{green}{5}\;\;
+\textcolor{orange!70!black}{6}\;\;
+\textcolor{red!70!black}{7}
+\;\;|\;\;
+\textcolor{orange!90!black}{8}\;\;
+\textcolor{blue}{9}\;\;
+\textcolor{purple}{10}\;\;
+\textcolor{green!70!black}{11}\;\;
+\textcolor{lime!80!black}{12}\;\;
+\textcolor{orange!50!black}{13}\;\;
+\textcolor{red!60!black}{14}\;\;
+\textcolor{orange!80!black}{15}
+\]
+
+	Note that, the above colouring is valid and turns out it is minimally valid as well (proof simply follows by considering a colouring using three or less distinct colours and getting a contradiction). Cool, but how can we proceed for cases $n=5,6,7$ and so on? For $n=5$ just colour the numbers $1,2,\dots,15$ as shown above and colour 16 with a new colour which is not used to colour the numbers before it. Colour the remaining numbers $17,18,\dots,31$ in the same manner in which we coloured $1,2,\dots,15$. For instance 17 is orange, 18 is blue and so on. This means $\chi_5 \leq 5$. Aha!! we can continue this process indefinitely for bigger $n$ introducing exactly one new colour each time giving us the upper bound $\chi_n \leq n$. We now ask the question, if this upper bound can be refined further and 
+fortunately the answer is a clear no.
+	\begin{numclaim}{1}
+		$\chi_n \geq n$.  
+	\end{numclaim}
+	\begin{proof} Partition the given set of integers into three subsets as 
+$A=\{1,2,\dots,2^{n-1}-1\}$, $B=\{2^{n-1}\}$ and 
+$C=\{2^{n-1}+1,2^{n-1}+2,\dots,2^n-1\}$. Notice, the numbers in $A$ must be coloured with at least $\chi_{n-1}$ distinct colours and similarly $C$ must be coloured with at least $\chi_{n-1}$ distinct colours. Our goal isto show that $\chi_n=\chi_{n-1}+1$. Suppose not, then we know that $\chi_n$ is at least $\chi_{n-1}$. So the only case we have to deal with is when $\chi_n=\chi_{n-1}$.If you look closely, there must be a number among $1,2,\dots,2^n-1$ with a unique colour, if not, consider the whole set as $2^n-1$ consecutive integers giving us a contradiction. In order to minimize $\chi_n$, it must be that numbers in $A$ and $C$ must be coloured with the same set of 
+colours. But note that every colour is used at least two times, which means the number in $B$ that is $2^{n-1}$ must be coloured with a unique colour and that is a contradiction as we had initially assumed $\chi_n = \chi_{n-1}$. Hence the lower bound.
+	\end{proof}
+
+	\noindent It is evident that $n \leq \chi_n \leq n$, hence giving us the required result that is $\chi_n = n$. $\qedwhite$
+
+	\begin{remark}[title=Open Problem.$\hspace{1mm}$] A further question one may ask is, how many minimally-valid colourings are possible in total given a set of distinct colours $C_1, C_2, \dots, C_{\chi_n}$?
+	\end{remark}	
+	\end{solution}
+\end{problem}
+
+
+\begin{problem}{7}{Ahan Chakraborty-Unknown} 
+	Let $n\in \mathbb{N}$. Let $X=\{1,2,3,...,n^2\}.$Let $A\subset X$ with $|A| = n$. Prove that $X\setminus A$ contains an arithmetic progression with $n$ terms.
+	\begin{solution} Suppose I could construct a subset $A$ such that $X\setminus A$ does not contain an arithmetic progression with $n$ elements. We shall device an algorithm for constructing it and then arrive at a conclusion that it is not possible. Arrange the elements on $X$ on a $n\times n$ grid as follows,
+$$
+	\begin{matrix}
+		\textcolor{red}{1} & \textcolor{red}{2} & \textcolor{red}{3} &\cdots & \textcolor{red}{n-1} & \textcolor{red}{n}\\
+		\textcolor{red}{n+1} & \textcolor{red}{n+2} & \textcolor{red}{n+3} & \cdots & \textcolor{red}{2n-1} & \textcolor{red}{2n}\\
+                \textcolor{red}{2n+1} & \textcolor{red}{2n+2} & \textcolor{red}{2n+3} & \cdots & \textcolor{red}{3n-1} & \textcolor{red}{3n}\\
+ 
+		\vdots & \vdots & \vdots & \ddots & \vdots &\vdots\\
+                \textcolor{red}{n^2-2n+1} & \textcolor{red}{n^2-2n+2} & \textcolor{red}{n^2-2n+3} & \cdots & \textcolor{red}{n^2-n-1} & \textcolor{red}{n^2-n}\\
+		\textcolor{red}{n^2-n+1} & \textcolor{red}{n^2-n+2} & \textcolor{red}{n^2-n+3} & \cdots & \textcolor{red}{n^2-1} & \textcolor{red}{n^2}
+	\end{matrix}
+	$$
+		\indent The nice thing about this arrangement is that, several $n$-element arithmetic progressions are very easy to spot i.e, just walk along the rows, columns, main diagonals. Notice that we must pick exactly one element from each row and column and place it in $A$, or else the row/column which doesn't share an element with $A$ will be a counter example. If we pick $1$, then we cannot pick any other element from the first row and also we cannot pick $n+1$, which means $\{2,3,\ldots, n+1\}\subseteq X\setminus A$ and that does not sound good to us. Similarly we can argue that none of the elements in the first column can be picked except for the last one (with value $=n^2-n+1$). Continuing this argument we can see that the ideal construction is to pick all the diagonal elements (the main diagonal that contains $n^2-n+1$). Note that $\{n-1, 2n-2, 3n-3,\ldots, (n-1)^2\}\cup\{(n-1)^2+n\}\subseteq X\setminus A$, hence contradicting the existence of such an $A$ and we are done. $\qedwhite$
+
+		\begin{remark}[title=Comment.$\hspace{1mm}$]
+		This way of constructing the algorithm resembles placing $n$ non-attacking rooks on a $n\times n$ chessboard, which seem like two totally unrelated topics.
+	\end{remark}
+
+	\end{solution}
+\end{problem}
+	
+
+\begin{problem}{8}{\href{}{IM0 P2, 2014}}
+	Let $n\ge 2$ be an integer. Consider an $n\times n$ chessboard consisting of $n^2$ unit squares. A configuration of $n$ rooks is \emph{peaceful} if every row and every column contains exactly one rook. Find the greatest positive integer $k$ such that, for each peaceful configuration of $n$ rooks, there is a $k\times k$ square which does not contain a rook on any its $k^2$ unit squares.
+	\begin{solution} The answer is $\lfloor n-1\rfloor$.\\
+	Let $f(n)$ denote the greatest such $k$ for a given $n$.
+	\end{solution}
+\end{problem}
