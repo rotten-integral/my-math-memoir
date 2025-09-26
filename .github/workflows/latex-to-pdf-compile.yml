@@ -1,31 +1,31 @@
-name: LaTeX PDF Build
+name: LateX to PDF
 
 on:
   push:
-    branches:
+    branches: 
       - main
+      - develop
+    tags:
+       - '*'
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  build:
+  build_latex:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
-    - name: Install TeX Live
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-lang-all
-
-    - name: Compile LaTeX to PDF
-      run: pdflatex -interaction=nonstopmode "My_Math_Memoir.tex"
-
-    - name: Upload PDF artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: My_Math_Memoir
-        path: My_Math_Memoir.pdf
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: latex2pdf
+        id: compile-latex-document
+        uses: thomas-chauvet/latex2pdf-action@1.0.5
+        with:
+          output_dir: output
+          main_latex_file: My_Math_Memoir.tex
+          ctan_packages: amsmath amsfonts lua-uni-algos
+      - name: Upload PDF to the workflow tab
+        id: upload-workflow-tab
+        uses: actions/upload-artifact@v2
+        with:
+          name: output
+          path: output/My_Math_Memoir.pdf
