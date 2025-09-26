@@ -1,0 +1,28 @@
+\section{Graph Theory}
+\subsection{Problems}
+\begin{problem}{1}{\href{https://artofproblemsolving.com/community/c6h3281174p34327473}{MTRP}}
+	In the planet of MTRPia, one alien named Bob wants to build roads across all the cities all over the planet. The alien government has imposed the condition that this construction must be carried out in such a way so that one can go from one city to any other city through the network of roads thus constructed. To have consistency in the whole process, Bob decides to have an even number of lords originating from each city. Prove that starting from an arbitrary city one can traverse the whole network of roads without ever traversing the same road twice.
+\end{problem}
+
+
+\subsection{Solutions}
+\begin{problem}{1}{\href{https://artofproblemsolving.com/community/c6h3281174p34327473}{MTRP}}
+	In the planet of MTRPia, one alien named Bob wants to build roads across all the cities all over the planet. The alien government has imposed the condition that this construction must be carried out in such a way so that one can go from one city to any other city through the network of roads thus constructed. To have consistency in the whole process, Bob decides to have an even number of lords originating from each city. Prove that starting from an arbitrary city one can traverse the whole network of roads without ever traversing the same road twice.
+	\begin{solution} The key question to ask is, if the contrary were true why would one fail traversing the whole network of roads without ever returning to the same road twice? For convenience we shall talk in terms of graph theory terminologies, where the cities are an analogue to vertices and roads to that of edges. Let the graph be $\mathcal{G}(V,E)$ with $V=\{v_1,v_2,\ldots,v_n\}$ for some natural $n$. Consider the process,
+	\begin{itemize}
+		\item Pick any vertex say $v_{a_1}$ and then pick any of its neighbour $v_{a_2}$.
+		\item Delete the edge $(v_{a_1}, v_{a_2})$ from $E$.
+		\item Now repeat the above steps but starting from $v_{a_2}$.
+	\end{itemize}
+	\begin{claim} 
+		The above process will do the job.
+	\end{claim}
+	\begin{proof} 
+	The virtue of the defined process is that it preserves $\text{deg}(v_i)\pmod{2}$ for all $i=1,2\ldots, n$ throughout. Which means it will only stop when it encounters a vertex $v$ when $\deg{v}=0$, so ignoring $v$ we get a new graph with $n-1$ vertices, from here it follows from induction with base case being a $3-$clique. And that my friend is easy to work with.
+	\end{proof}
+	
+	\noindent So yeah Bob's idea is pretty cool. $\qedwhite$
+
+	\end{solution}
+\end{problem}
+
