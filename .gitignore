@@ -1,1 +1,16 @@
-
+*.aux
+*.bbl
+*.blg
+*.brf
+*.dvi
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.gz
+*.fls
+*.synctex.gz
+*-blx.bib
+*.bcf
+*.run.xml
