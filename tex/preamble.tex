@@ -1,3 +1,4 @@
+% ---------<<Custom Made LaTeX Preamble-inspired by evan chen's package>>---------
 \documentclass[a4paper,11pt]{article}
 
 % ---<<Packages>>---
@@ -48,7 +49,7 @@
 
 % ---<<tcolorbox Environments>>---
 
-% Claim Box
+% ---<<Claim Box>>---
 \newtcolorbox{claim}[1]{%
 	colback=darkspringgreen!5!white,
 	colframe=darkspringgreen!5!white,
@@ -63,7 +64,7 @@
 	title={Claim #1.$\hspace{1mm}$}
 }
 
-% Claim Box without numbering
+% ---<<Claim Box without numbering>>---
 \newtcolorbox{claimnotnum}[1][]{%
 	colback=darkspringgreen!5!white,
 	colframe=darkspringgreen!5!white,
@@ -78,7 +79,7 @@
 	title={Claim ---$\hspace{1mm}$}
 }
 
-% Theorem Box
+% ---<<Theorem Box>>---
 \newtcolorbox{theorem}[2]{%
 	colback=turquoiseblue!5!white,
 	colframe=ultramarine!90!black,
@@ -89,10 +90,10 @@
 	arc=4pt,
 	enhanced,
 	attach title to upper,
-	title={Theorem #1 (\textmd{#2}).$\hspace{1mm}$}
+	title={Theorem #1 \textmd{(#2)}.$\hspace{1mm}$}
 }
 
-% Lemma Box
+% ---<<Lemma Box>>---
 \newtcolorbox{lemma}[2]{%
 	colback=peach-orange!5!white,
 	colframe=darkolivegreen!75!black,
@@ -103,10 +104,10 @@
 	boxrule=0.5pt,
 	sharp corners,
 	attach title to upper,
-	title={Lemma #1 (\textmd{#2}).$\hspace{1mm}$}
+	title={Lemma #1 \textmd{(#2)}.$\hspace{1mm}$}
 }
 
-% Example Box
+% ---<<Example Box>>---
 \newtcolorbox{example}[2]{%
 	colback=lavenderpurple!5!white,
 	colframe=palatinatepurple!75!black,
@@ -117,10 +118,10 @@
 	boxrule=0.5pt,
 	sharp corners,
 	attach title to upper,
-	title={Example #1 (\textmd{#2}).$\hspace{1mm}$}
+	title={Example #1 \textmd{(#2)}.$\hspace{1mm}$}
 }
 
-% Remark Box
+% ---<<Remark Box>>---
 \newtcolorbox{remark}[1][]{%
 	colback=black!5!white,
 	colframe=black!5!white,
@@ -136,9 +137,9 @@
 	title={Remark.$\hspace{1mm}$}
 }
 
-% Moral Box
-\newenvironment{moral}{%
-	\begin{tcolorbox}[boxrule=0.4pt,colframe=purple!70!black,
+% ---<<Takeaway Box>>---
+\newenvironment{takeaway}{%
+	\begin{tcolorbox}[boxrule=0.5pt,colframe=purple!70!black,
 		sharp corners,standard jigsaw,opacityback=0,left=10pt,right=10pt,top=5pt,bottom=5pt,
 		before skip=10pt,after skip=20pt]%
 	\sffamily\color{purple!50!black}}%
@@ -148,9 +149,11 @@
 % ---<<Standardized Cases Environment-use \begin{mycases} \item blah blah blah ... \end{mycases}>>--- 
 \newlength\mylen \settowidth\mylen{\textbf{Case~5.}} \newlist{mycases}{enumerate}{1} \setlist[mycases,1]{label=\textcolor{dukeblue}{\textbf{Case~\arabic*.}}, labelwidth=\dimexpr-\mylen-\labelsep\relax,leftmargin=0pt,align=right}
 
+
 % ---<<Highlight Commands>>---
 \newcommand{\bluehighlight}[1]{\textbf{\textcolor{blue}{#1}}}
 \newcommand{\olivegreenhighlight}[1]{\textbf{\textcolor{darkolivegreen}{#1}}}
+
 
 % ---<<Problem Environment>>---
 \newenvironment{problem}[2]{%
@@ -159,14 +162,17 @@
   \noindent
 }{}
 
+
 % ---<<QED Commands>>---
 \newcommand*{\qedblack}{\null\nobreak\hfill\ensuremath{\blacksquare}}
 \newcommand*{\qedwhite}{\null\nobreak\hfill\ensuremath{\square}}
 
+
 % ---<<Section Numbering>>---
 %\renewcommand{\thechapter}{\textcolor{raspberry}{\arabic{chapter}}}
-\renewcommand{\thesection}{\textcolor{raspberry}{\S}\arabic{section}}
-\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesection}{\textcolor{raspberry}{\S}\textcolor{raspberry}{\arabic{section}}}
+\renewcommand{\thesubsection}{\textcolor{raspberry}{\thesection.\arabic{subsection}}}
+
 
 % ---<<Footnote with Dagger>>---
 \newcounter{daggerfootnote}
@@ -180,7 +186,9 @@
 
 % ---<<Hyperref Colors Setup>>---
 \hypersetup{
-    linkcolor=raspberry,
-    citecolor=blue,
-    urlcolor=frenchrose
+	colorlinks=true,
+    linkcolor=blue,
+    citecolor=darkolivegreen,
+    urlcolor=raspberry
 }
+
