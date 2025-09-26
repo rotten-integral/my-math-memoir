@@ -1,0 +1,50 @@
+\section{Combinatorial Games}
+\subsection{Problems}
+\begin{problem}{1}{\href{https://artofproblemsolving.com/community/q1h2478238p34659801}{India P4, 2021}} 
+		A Magician and a Detective play a game. The Magician lays down cards numbered from $1$ to $52$ face-down on a table. On each move, the Detective can point to two cards and inquire if the numbers on them are consecutive. The Magician replies truthfully. After a finite number of moves, the Detective points to two cards. She wins if the numbers on these two cards are consecutive, and loses otherwise.\\
+	Prove that the Detective can guarantee a win if and only if she is allowed to ask at least $50$ questions.
+\end{problem}
+
+
+\begin{problem}{2}{\href{https://artofproblemsolving.com/community/c6h1671290p35965430}{IMO P4, 2018}}
+		A \emph{site} is any point $(x, y)$ in the plane such that $x$ and $y$ are both positive integers less than or equal to 20.\\
+	Initially, each of the 400 sites is unoccupied. Amy and Ben take turns placing stones with Amy going first. On her turn, Amy places a new red stone on an unoccupied site such that the distance between any two sites occupied by red stones is not equal to $\sqrt{5}$. On his turn, Ben places a new blue stone on any unoccupied site. (A site occupied by a blue stone is allowed to be at any distance from any other occupied site.) They stop as soon as a player cannot place a stone.\\
+	Find the greatest $K$ such that Amy can ensure that she places at least $K$ red stones, no matter how Ben places his blue stones.
+\end{problem}
+
+
+\subsection{Solutions}
+\begin{problem}{1}{\href{https://artofproblemsolving.com/community/q1h2478238p34659801}{India P4, 2021}} 
+		A Magician and a Detective play a game. The Magician lays down cards numbered from $1$ to $52$ face-down on a table. On each move, the Detective can point to two cards and inquire if the numbers on them are consecutive. The Magician replies truthfully. After a finite number of moves, the Detective points to two cards. She wins if the numbers on these two cards are consecutive, and loses otherwise.\\
+	Prove that the Detective can guarantee a win if and only if she is allowed to ask at least $50$ questions.
+	\begin{solution} Consider a complete graph $K_{52}$ where each vertex $C_i$ denotes the $i^{\text{th}}$ card. So each edge represents a potential win. Delete an edge $C_iC_j$ if the Detective has already inquired about the card $C_i$ and $C_j$ in a move.\\
+
+		\noindent\olivegreenhighlight{Strategy for The Detective.} It is easy to that she can guarantee a win with $50$ or less questions as she may fix a card say $C_1$ throughout and inquire about every other card.\\
+
+		\noindent\olivegreenhighlight{Strategy for The Magician.} Suppose the Detective can guarantee a win with $49$ questions then we shall show that she has a non zero probability of losing. Let us say she has a pre-planned strategy of picking pairs of cards from the positions $({a_1}, {b_1}), ({a_2}, {b_2}),\ldots, ({a_{49}}, {b_{49}})$ in that order with $1\le a_i, b_i\le 52$ and $a_i\ne b_i$. But notice if there is a Hamiltonian path even after deleting $49$ edges of $K_{52}$, the Magician could have simply placed the cards $C_1,C_2,\ldots, C_{52}$ in such a way, that these cards lie along the Hamiltonian path in that order. Which means none of the pairs of cards picked from the positions $({a_1}, {b_1}), ({a_2}, {b_2}),\ldots, ({a_{49}}, {b_{49}})$ contain cards with consecutive numberings and hence a non zero probability of the Detective losing. And yes, if you delete any $49$ edges from the graph a Hamiltonian path always exists due to \textbf{\textcolor{blue}{Ore's theorem}}. Therefore we may conclude, $50$ questions is the least number of questions required to guarantee a win. $\qedwhite$
+
+	\end{solution}
+\end{problem}
+
+	\begin{problem}{2}{\href{https://artofproblemsolving.com/community/c6h1671290p35965430}{IMO P4, 2018}}
+		A \emph{site} is any point $(x, y)$ in the plane such that $x$ and $y$ are both positive integers less than or equal to 20.\\
+	Initially, each of the 400 sites is unoccupied. Amy and Ben take turns placing stones with Amy going first. On her turn, Amy places a new red stone on an unoccupied site such that the distance between any two sites occupied by red stones is not equal to $\sqrt{5}$. On his turn, Ben places a new blue stone on any unoccupied site. (A site occupied by a blue stone is allowed to be at any distance from any other occupied site.) They stop as soon as a player cannot place a stone.\\
+	Find the greatest $K$ such that Amy can ensure that she places at least $K$ red stones, no matter how Ben places his blue stones.
+	\begin{solution} The answer is $100$.\\
+	
+		\noindent\olivegreenhighlight{Strategy for Ben.} The key idea  partition the $20\times 20$ set of lattice points into $25$ pieces of $4\times 4$ lattice points which we'll call \bluehighlight{units} as depicted below. And then colour each of the sites in one of four colours in this manner.
+
+	$$\begin{matrix}
+		\textcolor{blue}{\bullet} & \textcolor{green}{\bullet} & \textcolor{red}{\bullet} & \textcolor{yellow}{\bullet}\\
+		\textcolor{red}{\bullet} & \textcolor{yellow}{\bullet} & \textcolor{blue}{\bullet} & \textcolor{green}{\bullet}\\
+		\textcolor{green}{\bullet} & \textcolor{blue}{\bullet} & \textcolor{yellow}{\bullet} & \textcolor{red}{\bullet}\\
+		\textcolor{yellow}{\bullet} & \textcolor{red}{\bullet} & \textcolor{green}{\bullet} & \textcolor{blue}{\bullet}
+	\end{matrix}$$
+	\indent Suppose Amy places her stone on a site, then Ben can always place his stone in the same $4\times 4$ unit and same coloured site in which Amy had placed her stone just before in such way that Amy can place no more stones in the same coloured site in that unit. And this strategy of Ben forces Amy to not place more than $4$ stones in each unit. Hence the upper bound of $100$.\\
+
+		\noindent\olivegreenhighlight{Strategy for Amy.} Our goal is to show that Amy can place at least $100$ stones regardless of the wildest of strategies Ben designs. We simply colour the lattice points in checkered pattern with black and white. Then Amy can always choose to place her stones in white spots (non-attacking knights). Ben can best ruin this strategy by placing all his stones in white sites. But even then Amy would placed $100$ of her stones.\\
+
+	\noindent And we are done. $\qedwhite$
+
+	\end{solution}
+\end{problem}
