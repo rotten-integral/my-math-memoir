@@ -1,0 +1,186 @@
+\documentclass[a4paper,11pt]{article}
+
+% ---<<Packages>>---
+\usepackage[utf8]{inputenc}            
+\usepackage{amsmath, amssymb}
+\usepackage{mathtools}
+\usepackage{graphicx}                  
+\usepackage[linkcolors=true]{hyperref} 
+\usepackage{amsthm}                    
+\usepackage[most]{tcolorbox}           
+\usepackage{xcolor}                    
+\usepackage{geometry}                  
+\usepackage{fancyhdr}                  
+\usepackage{mathrsfs}                  
+\usepackage{enumitem}
+
+% ---<<For tcolorbox skins like "standard jigsaw">>---
+\tcbuselibrary{skins}
+
+% ---<<Geometry/Layout>>---
+\newgeometry{left=3cm, right=3cm, top=3cm, bottom=3cm, includefoot, heightrounded, footskip=30pt}
+
+% ---<<Fancy Header>>---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\textbf{My Math Memoir}}
+\fancyhead[L]{\textbf{rotten $\int$ntegral} \texttt{(Last Updated -- \today)}}
+\fancyfoot[R]{Page \thepage}
+
+% ---<<Colour Definitions>>---
+\definecolor{raspberry}{rgb}{0.89, 0.04, 0.36}
+\definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
+\definecolor{darkspringgreen}{rgb}{0.09, 0.45, 0.27}
+\definecolor{electricindigo}{rgb}{0.44, 0.0, 1.0}
+\definecolor{frenchrose}{rgb}{0.96, 0.29, 0.54}
+\definecolor{springgreen}{rgb}{0.0, 1.0, 0.5}
+\definecolor{amethyst}{rgb}{0.6, 0.4, 0.8}
+\definecolor{dukeblue}{rgb}{0.0, 0.0, 0.61}
+\definecolor{persianindigo}{rgb}{0.2, 0.07, 0.48}
+\definecolor{turquoiseblue}{rgb}{0.0, 1.0, 0.94}
+\definecolor{ultramarineblue}{rgb}{0.25, 0.4, 0.96}
+\definecolor{ultramarine}{rgb}{0.07, 0.04, 0.56}
+\definecolor{slateblue}{rgb}{0.42, 0.35, 0.8}
+\definecolor{darkolivegreen}{rgb}{0.33, 0.42, 0.18}
+\definecolor{peach-orange}{rgb}{1.0, 0.8, 0.6}
+\definecolor{palatinatepurple}{rgb}{0.41, 0.16, 0.38}
+\definecolor{lavenderpurple}{rgb}{0.59, 0.48, 0.71}
+
+% ---<<tcolorbox Environments>>---
+
+% Claim Box
+\newtcolorbox{claim}[1]{%
+	colback=darkspringgreen!5!white,
+	colframe=darkspringgreen!5!white,
+	coltitle=darkspringgreen,
+	fonttitle=\bfseries,
+	colbacktitle=darkspringgreen!5!white,
+	enhanced,
+	boxrule=0pt,
+	borderline west={2pt}{0pt}{darkspringgreen},
+	sharp corners,
+	attach title to upper,
+	title={Claim #1.$\hspace{1mm}$}
+}
+
+% Claim Box without numbering
+\newtcolorbox{claimnotnum}[1][]{%
+	colback=darkspringgreen!5!white,
+	colframe=darkspringgreen!5!white,
+	coltitle=darkspringgreen,
+	fonttitle=\bfseries,
+	colbacktitle=darkspringgreen!5!white,
+	enhanced,
+	boxrule=0pt,
+	borderline west={2pt}{0pt}{darkspringgreen},
+	sharp corners,
+	attach title to upper,
+	title={Claim ---$\hspace{1mm}$}
+}
+
+% Theorem Box
+\newtcolorbox{theorem}[2]{%
+	colback=turquoiseblue!5!white,
+	colframe=ultramarine!90!black,
+	coltitle=ultramarine!90!black,
+	fonttitle=\bfseries,
+	colbacktitle=turquoiseblue!5!white,
+	boxrule=0.5pt,
+	arc=4pt,
+	enhanced,
+	attach title to upper,
+	title={Theorem #1 (\textmd{#2}).$\hspace{1mm}$}
+}
+
+% Lemma Box
+\newtcolorbox{lemma}[2]{%
+	colback=peach-orange!5!white,
+	colframe=darkolivegreen!75!black,
+	coltitle=darkolivegreen!75!black,
+	fonttitle=\bfseries,
+	colbacktitle=peach-orange!5!white,
+	enhanced,
+	boxrule=0.5pt,
+	sharp corners,
+	attach title to upper,
+	title={Lemma #1 (\textmd{#2}).$\hspace{1mm}$}
+}
+
+% Example Box
+\newtcolorbox{example}[2]{%
+	colback=lavenderpurple!5!white,
+	colframe=palatinatepurple!75!black,
+	coltitle=palatinatepurple!75!black,
+	fonttitle=\bfseries,
+	colbacktitle=lavenderpurple!5!white,
+	enhanced,
+	boxrule=0.5pt,
+	sharp corners,
+	attach title to upper,
+	title={Example #1 (\textmd{#2}).$\hspace{1mm}$}
+}
+
+% Remark Box
+\newtcolorbox{remark}[1][]{%
+	colback=black!5!white,
+	colframe=black!5!white,
+	coltitle=black!75!black,
+	fonttitle=\bfseries,
+	fontupper=\small,
+	colbacktitle=black!5!white,
+	enhanced,
+	boxrule=0pt,
+	borderline west={2pt}{0pt}{black!75!black},
+	sharp corners,
+	attach title to upper,
+	title={Remark.$\hspace{1mm}$}
+}
+
+% Moral Box
+\newenvironment{moral}{%
+	\begin{tcolorbox}[boxrule=0.4pt,colframe=purple!70!black,
+		sharp corners,standard jigsaw,opacityback=0,left=10pt,right=10pt,top=5pt,bottom=5pt,
+		before skip=10pt,after skip=20pt]%
+	\sffamily\color{purple!50!black}}%
+	{\end{tcolorbox}}
+
+
+% ---<<Standardized Cases Environment-use \begin{mycases} \item blah blah blah ... \end{mycases}>>--- 
+\newlength\mylen \settowidth\mylen{\textbf{Case~5.}} \newlist{mycases}{enumerate}{1} \setlist[mycases,1]{label=\textcolor{dukeblue}{\textbf{Case~\arabic*.}}, labelwidth=\dimexpr-\mylen-\labelsep\relax,leftmargin=0pt,align=right}
+
+% ---<<Highlight Commands>>---
+\newcommand{\bluehighlight}[1]{\textbf{\textcolor{blue}{#1}}}
+\newcommand{\olivegreenhighlight}[1]{\textbf{\textcolor{darkolivegreen}{#1}}}
+
+% ---<<Problem Environment>>---
+\newenvironment{problem}[2]{%
+  \noindent
+  \textbf{\textcolor{persianindigo}{Problem #1}}$\hspace{1mm}$(\textcolor{frenchrose}{#2})\textbf{\textcolor{persianindigo}{.}}
+  \noindent
+}{}
+
+% ---<<QED Commands>>---
+\newcommand*{\qedblack}{\null\nobreak\hfill\ensuremath{\blacksquare}}
+\newcommand*{\qedwhite}{\null\nobreak\hfill\ensuremath{\square}}
+
+% ---<<Section Numbering>>---
+%\renewcommand{\thechapter}{\textcolor{raspberry}{\arabic{chapter}}}
+\renewcommand{\thesection}{\textcolor{raspberry}{\S}\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+
+% ---<<Footnote with Dagger>>---
+\newcounter{daggerfootnote}
+\newcommand*{\daggerfootnote}[1]{%
+    \setcounter{daggerfootnote}{\value{footnote}}
+    \renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+    \footnote[2]{#1}
+    \setcounter{footnote}{\value{daggerfootnote}}
+    \renewcommand*{\thefootnote}{\arabic{footnote}}
+}
+
+% ---<<Hyperref Colors Setup>>---
+\hypersetup{
+    linkcolor=raspberry,
+    citecolor=blue,
+    urlcolor=frenchrose
+}
