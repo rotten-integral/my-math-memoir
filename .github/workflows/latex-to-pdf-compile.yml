@@ -1,31 +1,44 @@
-name: LateX to PDF
+name: LaTeX PDF Build & Clean Deploy
 
 on:
   push:
-    branches: 
+    branches:
       - main
-      - develop
-    tags:
-       - '*'
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  build_latex:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Set up Git repository
-        uses: actions/checkout@v2
-      - name: latex2pdf
-        id: compile-latex-document
-        uses: thomas-chauvet/latex2pdf-action@1.0.5
-        with:
-          output_dir: output
-          main_latex_file: My_Math_Memoir.tex
-          ctan_packages: amsmath amsfonts lua-uni-algos
-      - name: Upload PDF to the workflow tab
-        id: upload-workflow-tab
-        uses: actions/upload-artifact@v2
-        with:
-          name: output
-          path: output/My_Math_Memoir.pdf
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install TeX Live
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-lang-all
+
+    - name: Compile LaTeX to PDF
+      run: pdflatex -interaction=nonstopmode "My_Math_Memoir.tex"
+
+    - name: Prepare PDF for deployment
+      run: |
+        # Create a clean folder
+        mkdir -p deploy
+        # Move the PDF into the deploy folder
+        mv "My_Math_Memoir.pdf" deploy/
+        # Remove any other files from previous runs
+        rm -rf deploy/*~ deploy/*.log deploy/*.aux
+
+    - name: Deploy PDF to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v7
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: deploy
+        publish_branch: gh-pages
+        keep_files: false  # ensures old files are removed
+        user_name: github-actions
+        user_email: github-actions@github.com
