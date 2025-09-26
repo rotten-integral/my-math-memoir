@@ -1,0 +1,25 @@
+\section{Miscellaneous}
+\subsection{Problems}
+\begin{problem}{1}{\href{}{India P1, 2021}}
+	Suppose $r \ge 2$ is an integer, and let $m_1, n_1, m_2, n_2, \dots, m_r, n_r$ be $2r$ integers such that$$\left|m_in_j-m_jn_i\right|=1$$for any two integers $i$ and $j$ satisfying $1 \le i<j \le r$. Determine the maximum possible value of $r$.
+\end{problem}
+
+
+\subsection{Solutions}
+\begin{problem}{1}{\href{}{India P1, 2021}}
+	Suppose $r \ge 2$ is an integer, and let $m_1, n_1, m_2, n_2, \dots, m_r, n_r$ be $2r$ integers such that$$\left|m_in_j-m_jn_i\right|=1$$for any two integers $i$ and $j$ satisfying $1 \le i<j \le r$. Determine the maximum possible value of $r$.
+	\begin{solution} We claim the maximum possible value of $r$ is $3$.\\
+What does the subscripts of $m_in_j$ and $m_jn_i$ remind us of - matrix elements that are reflections of each other in the main diagonal. So let us arrange the numbers as follows for better intuition,
+$$\begin{matrix}
+		m_1n_1 & \textcolor{blue}{m_1n_2} & \textcolor{blue}{m_1n_3} & \textcolor{blue}{m_1n_4} & \cdots & \textcolor{blue}{m_1n_r}\\
+		\textcolor{red}{m_2n_1} & m_2n_2 & \textcolor{blue}{m_2n_3} & \textcolor{blue}{m_2n_4} & \cdots & \textcolor{blue}{m_2n_r}\\
+		\textcolor{red}{m_3n_1} & \textcolor{red}{m_3n_2} & m_3n_3 & \textcolor{blue}{m_3n_4} & \cdots & \textcolor{blue}{m_3n_r}\\
+		\textcolor{red}{m_4n_1} & \textcolor{red}{m_4n_2} & \textcolor{red}{m_4n_3} & m_4n_4 & \cdots & \textcolor{blue}{m_3n_r}\\
+		\vdots & \vdots & \vdots & \vdots & \ddots & \vdots\\
+		\textcolor{red}{m_rn_1} & \textcolor{red}{m_rn_2} & \textcolor{red}{m_rn_3} & \textcolor{red}{m_rn_4} & \cdots & m_rn_r
+	\end{matrix}
+	$$
+		\indent Notice that entries which are reflections of each other (the subscripts) about the main diagonals are of different parity. Assume $n_1$ is even which means all the entries in the first row are odd (except the first entry of course). Say $m_2$ is even then we know both $m_3$ and $n_2$ are odd (as $m_2n_3$ and $m_3n_2$ are reflections of each other) also $m_4$ is odd. Here comes the catch if you look closely, both $m_4n_3$ and $m_3n_4$ are odd which is a contradiction. Hence $r\le 3$ and for $r=3$ a number of constructions are already given. $\qedwhite$
+	\end{solution}
+	
+\end{problem}
