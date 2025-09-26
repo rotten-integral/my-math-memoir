@@ -1,0 +1,25 @@
+\section{Global Ideas and the Probabilistic Method}
+\subsection{Problem}
+\begin{problem}{1}{\href{https://artofproblemsolving.com/community/c6h420397p34307872}{USAMO P4, 1985}}
+	There are $n$ people at a party. Prove that there are two people such that, of the remaining $n-2$ people, there are at least $\left\lfloor\frac{n}{2}\right\rfloor-1$ of them, each of whom either knows both or else knows neither of the two. Assume that knowing is a symmetric relation, and that $\lfloor x\rfloor$ denotes the greatest integer less than or equal to $x$.
+\end{problem}
+	
+
+\subsection{Solutions}
+\begin{problem}{1}{\href{https://artofproblemsolving.com/community/c6h420397p34307872}{USAMO P4, 1985}}
+	There are $n$ people at a party. Prove that there are two people such that, of the remaining $n-2$ people, there are at least $\left\lfloor\frac{n}{2}\right\rfloor-1$ of them, each of whom either knows both or else knows neither of the two. Assume that knowing is a symmetric relation, and that $\lfloor x\rfloor$ denotes the greatest integer less than or equal to $x$.
+	\begin{solution} Pick pairs of two people uniformly at random and define a random variable $X$ such that
+$$X\overset{\mathrm{def}}{=}
+	\begin{cases}
+		\parbox{.3\linewidth}{$\#$ People among the remaining $n-2$ people who are acquainted to both or neither.}\\[3ex]
+	\end{cases}$$
+	\indent Our goal is to show that $\mathbb{E}[X]\ge \left\lfloor\frac{n}{2}\right\rfloor-1$, as it will automatically assure the existence of two such people. But computing $\mathbb{E}[X]=\sum_{v\in V}v\mathbb{P}[X=v]$ seems to be a pain in the as*, not a big deal as linearity of $\mathbb{E}[X]$ is a boon. We shall introduce auxiliary random variables $X_i$ for $i=1,2,\ldots,n-2$ which will help in the computation, consider
+$$X_i\overset{\mathrm{def}}{=}
+\begin{cases}
+	0 & \parbox{.3\linewidth}{if $i^{\text{th}}$ person among the remaining is acquainted to exactly one of them,}\\[3ex]
+	1 & \text{otherwise.}
+\end{cases}$$
+	Notice $\mathbb{P}[X_i=v]=1/2$. As $\displaystyle X=\sum_{1\le i\le n-2}X_i$ and using the boon we mentioned earlier we have the following,
+$$\mathbb{E}[X]=\mathbb{E}\left[\sum_{1\le i\le n-2}X_i\right]=\sum_{1\le i\le n-2}\mathbb{E}[X_i]=\sum_{v\in V}v\mathbb{P}[X_i=v]=\cfrac{n-2}{2}\ge \left\lfloor\cfrac{n}{2}\right\rfloor-1.$$And we are done.$\qedwhite$
+	\end{solution}
+\end{problem}
