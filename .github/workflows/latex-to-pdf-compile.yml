@@ -18,10 +18,10 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-lang-all
 
     - name: Compile LaTeX to PDF
-      run: pdflatex -interaction=nonstopmode "My Math Memoir.tex"
+      run: pdflatex -interaction=nonstopmode "My_Math_Memoir.tex"
 
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v3
       with:
         name: PDF
-        path: My Math Memoir.pdf
+        path: My_Math_Memoir.pdf
