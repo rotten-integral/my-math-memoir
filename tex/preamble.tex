@@ -23,7 +23,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[R]{\textbf{My Math Memoir}}
-\fancyhead[L]{\textbf{rotten $\int$ntegral} \texttt{(Last Updated -- \today)}}
+\fancyhead[L]{\textbf{rotten $\int$ntegral} \texttt{(Last Updated$-$\today)}}
 \fancyfoot[R]{Page \thepage}
 
 % ---<<Colour Definitions>>---
@@ -44,6 +44,8 @@
 \definecolor{peach-orange}{rgb}{1.0, 0.8, 0.6}
 \definecolor{palatinatepurple}{rgb}{0.41, 0.16, 0.38}
 \definecolor{lavenderpurple}{rgb}{0.59, 0.48, 0.71}
+\definecolor{salmonpink}{rgb}{1.0, 0.57, 0.64}
+
 
 % ---<<tcolorbox Environments>>---
 
@@ -170,9 +172,9 @@
 % ---<<Problem Environment>>---
 \newenvironment{problem}[2]{%
   \noindent\newline
-  \textbf{\textcolor{persianindigo}{Problem #1}}$\hspace{1mm}$(\textcolor{frenchrose}{#2})\textbf{\textcolor{persianindigo}{.}}
+  \textbf{\textcolor{persianindigo}{Problem #1}}$\hspace{1mm}$(\textcolor{salmonpink}{#2})\textbf{\textcolor{persianindigo}{.}}
   \noindent
-}{$\vspace{0.5cm}$}
+}{$\vspace{0.3cm}$}
 
 
 % ---<<Solution Environment>>---
@@ -180,14 +182,14 @@
   \noindent\newline
   \textbf{Solution.$\hspace{1mm}$}
   \noindent
-}{$\vspace{0.5cm}$}
+}{$\vspace{0.3cm}$}
 
 % ---<<Numbered Solution Environment>>---
 \newenvironment{numsolution}[1]{%
   \noindent\newline
   \textbf{Solution #1.$\hspace{1mm}$}
   \noindent
-}{$\vspace{0.5cm}$}
+}{$\vspace{0.3cm}$}
 
 
 % ---<<Proof Environment>>---
@@ -195,7 +197,7 @@
   \noindent
   \emph{Proof.$\hspace{1mm}$}
   \noindent
-}{$\vspace{0.5cm}$}
+}{$\vspace{0.3cm}$}
 
 
 % ---<<QED Commands>>---
