@@ -47,7 +47,7 @@
 	Let $S$ be a subset of $\{0,1,2,\dots ,9\}$. Suppose there is a positive integer $N$ such that for any integer $n>N$, one can find positive integers $a,b$ so that $n=a+b$ and all the digits in the decimal representations of $a,b$ (expressed without leading zeros) are in $S$. Find the smallest possible value of $|S|$.
 	\begin{solution} We claim $\min |S|=5$, which can be achieved by taking $S=\{0,1,2,3,7\}$.\\
 
-	\noindent\textcolor{darkolivegreen}{\textbf{Why Does the Construction Work?}} Note that sum of pairs of elements (not necessarily distinct) of $S$ generate the whole residue class modulo $10$,
+	\olivegreenhighlight{Why Does the Construction Work?} Note that sum of pairs of elements (not necessarily distinct) of $S$ generate the whole residue class modulo $10$,
 	\begin{center}\begin{tabular}{c| c c  c c c}
 & 0 & 1 & 2 & 3 & 7\\
 \hline
@@ -66,7 +66,7 @@ $+$ & 3 & 7 & 0 & 7 & 7 & 2 & 7 & 2 & 2 & 1 & 3\\
 \end{tabular}\end{center}
 	\noindent \emph{Note.} In fact we get $N=1$ which is cool.\\
 
-	\noindent\textcolor{darkolivegreen}{\textbf{Establishing the Lower Bound.}} We shall show that $|S|>4$. Suppose there exists a single digit number $d$ such that $s_1+s_2\not\equiv d\pmod{10}$ for each $(s_1, s_2)\in S\times S$ then we will not be able to generate
+	\olivegreenhighlight{Establishing the Lower Bound.} We shall show that $|S|>4$. Suppose there exists a single digit number $d$ such that $s_1+s_2\not\equiv d\pmod{10}$ for each $(s_1, s_2)\in S\times S$ then we will not be able to generate
 $$\underbrace{\overline{\text{**}\ldots\text{*}d}}_{\text{take sufficiently large number}}$$as a sum of $a,b$. Hence it must be that,
 $$\{s_1+s_2\pmod{10} \mid s_1,s_2\in S\}=\mathbb{Z}_{10}\quad\text{meaning,}\quad \binom{|S|}{2}+|S|\ge 10.$$From the above mentioned bound it is quite clear that $|S|\ge 4$, so we are left to show that $|S|\ne 4$. Suppose $S=\{s_1,s_2,s_3,s_4\}$, notice $2s_i\pmod {10}$ generates four distinct even numbers among $\mathbb{Z}_{10}$. So either exactly one element of $S$ is even or all are odd, the latter implies $s_i+s_j$ is even for $i\ne j$ meaning the number of even numbers generated exceeds $10/2$ which is ridiculous. Similarly, we argue that the former case is also not possible, therefore $|S|>4$ and we are done. $\qedwhite$
 
@@ -79,7 +79,7 @@ $$\{s_1+s_2\pmod{10} \mid s_1,s_2\in S\}=\mathbb{Z}_{10}\quad\text{meaning,}\qua
 	\begin{solution} The answer is $121$.\\
 	\indent By pigeonhole principle it is evident that $n$ is atmost $121$. And fortunately by the virtue of this artificial setup, there exists a construction for $n=121$ $-$ consider the scores of each student to be an arithmetic progression of course under modulo $11$. There are $11$ choices each for the intial term and the common difference hence making $11\times 11=121$ of them.\\
 	
-	\noindent\textbf{\textcolor{darkolivegreen}{But how are we sure that no two of them have two or more coinciding terms?}} Suppose some two different arithmetric progressions namely, $\{a, a+d, \ldots, a+5d\}$ and $\{a', a'+d', \ldots, a'+5d'\}$ have two coinciding terms say $a+nd=a'+nd'$ and $a+md=a'+md'$ with $0\le n\ne m\le 5$. As $11$ is prime, by cancellation law we have that $n\equiv m$ which is a contradiction and we are done. $\qedwhite$\\
+	\olivegreenhighlight{But how are we sure that no two of them have two or more coinciding terms?} Suppose some two different arithmetric progressions namely, $\{a, a+d, \ldots, a+5d\}$ and $\{a', a'+d', \ldots, a'+5d'\}$ have two coinciding terms say $a+nd=a'+nd'$ and $a+md=a'+md'$ with $0\le n\ne m\le 5$. As $11$ is prime, by cancellation law we have that $n\equiv m$ which is a contradiction and we are done. $\qedwhite$\\
 
 	\begin{remark}[title=Confession.$\hspace{1mm}$] 
 	I had to look up the ARCH for hints regarding the construction.
