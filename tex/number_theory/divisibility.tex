@@ -56,7 +56,7 @@ $n$ & $1$ & $1$ & $2$ & $2\cdot 3$ & $2\cdot 3^2$ & $2\cdot 3^2\cdot 5$ & $2\cdo
 
 	\begin{numclaim}{1}
 		A prime $p$ divides $a_n$ if and only if $p<n$.
-	\end{claim}
+	\end{numclaim}
 	\begin{proof} This simply follows from an inductive argument (base case holds-refer the table). Suppose this property holds for some natural $N$ then we have,
 $$a_{N+1}=\underbrace{(N+1-\gcd(N, a_N))}_{\text{less than $N+1$}}\times a_N $$By hypothesis it is true that every prime less than $N$ divides $a_N$ and are the only ones. As $N+1-\gcd(N, a_N)< N+1$, our claim holds!
 	\end{proof}
