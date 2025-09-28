@@ -1,4 +1,4 @@
-% ---------<<Custom Made LaTeX Preamble-inspired by evan chen's>>---------
+% ---------<<Custom Made LaTeX Preamble-inspired by evan chen's package>>---------
 % ---<<Packages>>---
 \usepackage[utf8]{inputenc}            
 \usepackage{amsmath, amssymb}
@@ -18,6 +18,7 @@
 
 % ---<<Geometry/Layout>>---
 \newgeometry{left=3cm, right=3cm, top=3cm, bottom=3cm, includefoot, heightrounded, footskip=30pt}
+\setlength{\headheight{52pt}}
 
 % ---<<Fancy Header>>---
 \pagestyle{fancy}
@@ -48,7 +49,6 @@
 
 
 % ---<<tcolorbox Environments>>---
-
 % ---<<Claim Box>>---
 \newtcolorbox{numclaim}[1]{%
 	colback=darkspringgreen!5!white,
@@ -95,11 +95,11 @@
 
 % ---<<Lemma Box>>---
 \newtcolorbox{lemma}[1]{%
-	colback=peach-orange!5!white,
+	colback=peach-orange!10!white,
 	colframe=darkolivegreen!75!black,
 	coltitle=darkolivegreen!75!black,
 	fonttitle=\bfseries,
-	colbacktitle=peach-orange!5!white,
+	colbacktitle=peach-orange!10!white,
 	enhanced,
 	boxrule=0.5pt,
 	sharp corners,
@@ -109,11 +109,11 @@
 
 % ---<<Proposition Box>>---
 \newtcolorbox{proposition}[1]{%
-	colback=peach-orange!5!white,
+	colback=peach-orange!10!white,
 	colframe=darkolivegreen!75!black,
 	coltitle=darkolivegreen!75!black,
 	fonttitle=\bfseries,
-	colbacktitle=peach-orange!5!white,
+	colbacktitle=peach-orange!10!white,
 	enhanced,
 	boxrule=0.5pt,
 	sharp corners,
@@ -123,11 +123,11 @@
 
 % ---<<Example Box>>---
 \newtcolorbox{example}[2]{%
-	colback=lavenderpurple!5!white,
+	colback=lavenderpurple!10!white,
 	colframe=palatinatepurple!75!black,
 	coltitle=palatinatepurple!75!black,
 	fonttitle=\bfseries,
-	colbacktitle=lavenderpurple!5!white,
+	colbacktitle=lavenderpurple!10!white,
 	enhanced,
 	boxrule=0.5pt,
 	sharp corners,
@@ -205,8 +205,8 @@
 \newcommand*{\qedwhite}{\null\nobreak\hfill\ensuremath{\square}}
 
 
-% ---<<Section Numbering>>---
-\renewcommand{\thechapter}{\textcolor{raspberry}{\arabic{chapter}}}
+% ---<<Chapter/Section Numbering>>---
+\renewcommand{\thechapter}{\textcolor{raspberry}{\Roman{chapter}}}
 \renewcommand{\thesection}{\textcolor{raspberry}{\S}\textcolor{raspberry}{\arabic{section}}}
 \renewcommand{\thesubsection}{\textcolor{raspberry}{\thesection.\arabic{subsection}}}
 
