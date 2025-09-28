@@ -1,0 +1,115 @@
+\section{Number Theory Constructions}
+\subsection{Problems}
+\begin{problem}{1}{\href{https://artofproblemsolving.com/community/c5h1433969p8108366}{USAMO P1, 2017}} 
+	Prove that there exists infinitely many pairs of relatively prime positive integers $a,b>1$ for which $a+b\lvert a^b+b^a$.
+\end{problem}
+
+\begin{problem}{2}{\href{https://artofproblemsolving.com/community/q2h3281033p34301017}{USAJMO P3, 2024}}
+	Let $a(n)$ be the sequence defined by $a(1)=2$ and $a(n+1)=(a(n))^{n+1}-1$ for each integer $n\geq 1$. Suppose that $p>2$ is a prime and $k$ is a positive integer. Prove that some term of the sequence $a(n)$ is divisible by $p^k$.
+\end{problem}
+
+\begin{problem}{3}{\href{https://artofproblemsolving.com/community/c6h1989008p34732913}{India P3, 2020}}
+	Let $S$ be a subset of $\{0,1,2,\dots ,9\}$. Suppose there is a positive integer $N$ such that for any integer $n>N$, one can find positive integers $a,b$ so that $n=a+b$ and all the digits in the decimal representations of $a,b$ (expressed without leading zeros) are in $S$. Find the smallest possible value of $|S|$.
+\end{problem}
+
+\begin{problem}{4}{\href{https://artofproblemsolving.com/community/c6h62176p35923955}{IMO P5, 1989}}
+	Prove that for every positive integer $n$, theree exists $n$ consecutive positive integers such that noe of them is a power of a prime.
+\end{problem}
+
+\begin{problem}{5}{\href{https://artofproblemsolving.com/community/c5h404354p2254810}{USAMO P4, 2011}}
+	Consider the assertion that for each positive integer $n\ge 2$, the remainder upon dividing $2^{2^n}$ by $2^n-1$ is a power of $4$. Either prove the assertion or find (with proof) a counterexample.
+\end{problem}
+
+
+\subsection{Solutions}
+\begin{problem}{1}{\href{https://artofproblemsolving.com/community/c5h1433969p8108366}{USAMO P1, 2017}} 
+	Prove that there exists infinitely many pairs of relatively prime positive integers $a,b>1$ for which $a+b\lvert a^b+b^a$.
+	\begin{numsolution}{1} We claim $(a,b)=(4k^2-1, 4k^2+1)$ is a valid construction for any odd natural $k$.\\
+	Evidently, $\gcd(4k^2-1, 4k^2+1)$. So, we are only left to show
+	$$8k^2\lvert (4k^2-1)^{4k^2+1}+(4k^2+1)^{4k^2-1}.$$
+	As $\gcd(8, k^2)=1$, we can separately work in mod $k^2$ and mod $8$. We then have,
+	\begin{align*}
+		(4k^2-1)^{4k^2+1}+(4k^2+1)^{4k^-1} &\equiv (-1)^{\text{odd}}+(1)^{\text{odd}}\pmod {k^2}\\
+		&\equiv 0.
+	\end{align*}
+	Note that $k^2\equiv 1\pmod 8$, then,
+	\begin{align*}
+		(4k^2-1)^{4k^2+1}+(4k^2+1)^{4k^2-1} &\equiv 3^5+5^3\pmod 8\\
+		&\equiv 0.	
+	\end{align*}
+	Indeed, the proposed construction is valid and we are done. $\qedwhite$
+	\end{numsolution}
+	\begin{numsolution}{2}(Courtesy: \texttt{@v\_Enhance}) My construction: let $d \equiv 1 \pmod 4$, $d > 1$. Let $x = \frac{d^d+2^d}{d+2}$. Then set\[ a = \frac{x+d}{2}, \qquad 	b = \frac{x-d}{2}. \]To see this works, first check that $b$ is odd and $a$ is even. Let $d = a-b$ be odd. Then:\begin{align*} 	a+b \mid a^b+b^a &\iff 	(-b)^b + b^a \equiv 0 \pmod{a+b} \\ 	&\iff b^{a-b} \equiv 1 \pmod{a+b} \\ 	&\iff b^d \equiv 1 \pmod{d+2b} \\ 	&\iff (-2)^d \equiv d^d \pmod{d+2b} \\ 	&\iff d+2b \mid d^d + 2^d. \end{align*}So it would be enough that\[ d+2b = \frac{d^d+2^d}{d+2}  \implies b = \frac{1}{2} \left( \frac{d^d+2^d}{d+2} - d \right) \]which is what we constructed. Also, since $\gcd(x,d) = 1$ it follows $\gcd(a,b) = \gcd(d,b) = 1$. $\qedwhite$
+	
+	\begin{remark}
+		Bruhh after reading, Evan's comment that any consecutive odd pair works, I feel so stupid.
+	\end{remark}
+	\end{numsolution}
+\end{problem}
+	
+\begin{problem}{2}{\href{https://artofproblemsolving.com/community/q2h3281033p34301017}{USAJMO P3, 2024}} Let $a(n)$ be the sequence defined by $a(1)=2$ and $a(n+1)=(a(n))^{n+1}-1$ for each integer $n\geq 1$. Suppose that $p>2$ is a prime and $k$ is a positive integer. Prove that some term of the sequence $a(n)$ is divisible by $p^k$.
+	\begin{solution} The structure of the recurrence somewhat reminds us of the famous Euler's Totient theorem, turns out there is a little more to that. Consider the terms with indices which are one less than multiples of $\varphi(p^k)$. If any of them say $a(m\varphi(p^k)-1)$ is invertible over $\mathbb{Z}_{p^k}$ for some natural $m$, then we are done as$$a(m\varphi(p^k))\equiv 0\pmod{p^k}.$$Suppose there isn't one then it is certain that
+	$$a(m(p-1)-1)= (a(m(p-1)-2))^{m(p-1)-1}-1\equiv 0\pmod{p}\qquad\text{for each $m$,}$$
+	\indent From the above one might agree, $\gcd(p, a(m(p-1)-2))=1$ and $a(m(p-1)-2)\equiv 1\pmod{p}$. Wait how does that help?! Lifting the Exponent lemma (LTE for short) to the rescue my friend! Recollect that given a prime $p|a-b$ with $\gcd(a,p)=\gcd(b, p)=1$ we have
+$$\nu_p(a^n-b^n)=\nu_p(a-b)+\nu_p(n),$$where $\nu_p()$ denotes the $p-$adic valuation. We then have,
+$$\nu_p((a(m(p-1)-2))^{m(p-1)-1}-1) = \nu_p(a(m(p-1)-2)-1)+\underbrace{\nu_p(m(p-1)-1)}_{\text{can take arbitrarily large values}}.$$
+	\begin{numclaim}{1}
+	 The value of $\nu_p({m(p-1)-1})$ can be made arbitrarily large with a right choice for $m$.
+	\end{numclaim}
+	\begin{proof} Easily follows from an elementary result. As $\gcd(p-1,p^k)=1$, Bézout's lemma (or more precisely a corollary) assures the existence of two positive integers $x,y$ such that $x(p-1)-1=yp^k$. And $\nu_p(x(p-1)-1)\ge k$, hence the claim.
+	\end{proof}
+
+	By claim 1 we have a valid construction for $m$ with $p^k |a(m(p-1)-1)$ and we are done. $\qedwhite$	
+	\end{solution}
+\end{problem}
+
+\begin{problem}{3}{\href{https://artofproblemsolving.com/community/c6h1989008p34732913}{India P3, 2020}}
+	Let $S$ be a subset of $\{0,1,2,\dots ,9\}$. Suppose there is a positive integer $N$ such that for any integer $n>N$, one can find positive integers $a,b$ so that $n=a+b$ and all the digits in the decimal representations of $a,b$ (expressed without leading zeros) are in $S$. Find the smallest possible value of $|S|$.
+	\begin{solution} We claim $\min |S|=5$, which can be achieved by taking $S=\{0,1,2,3,7\}$.\\
+
+	\olivegreenhighlight{Why Does the Construction Work?} Note that sum of pairs of elements (not necessarily distinct) of $S$ generate the whole residue class modulo $10$,
+	\begin{center}\begin{tabular}{c| c c  c c c}
+& 0 & 1 & 2 & 3 & 7\\
+\hline
+0 & \textcolor{red}{\textbf{0}} & \textcolor{red}{\textbf{1}} & \textcolor{red}{\textbf{2}} & 3 & \textcolor{red}{\textbf{7}}\\ 
+1 & $\cdot$ & 2 & \textcolor{red}{\textbf{3}} & 4 & \textcolor{red}{\textbf{8}}\\ 
+2 & $\cdot$ & $\cdot$ & \textcolor{red}{\textbf{4}} & \textcolor{red}{\textbf{5}} & \textcolor{red}{\textbf{9}}\\ 
+3 & $\cdot$ & $\cdot$ & $\cdot$ & \textcolor{red}{\textbf{6}} & 0\\ 
+7 & $\cdot$ & $\cdot$ & $\cdot$ & $\cdot$ & 4\\ 
+\end{tabular}\end{center}
+	\indent The nice thing about the construction is that it makes sure there's no carrying-over stuff, so we may choose each digit of $a$ and $b$ independently. For example, say we want to generate the number $59078294316$, we simple choose $a,b$ according to the above table
+	\begin{center}\begin{tabular}{c c c c c c c c c c c c}
+        & 2 & 2 & 0 & 0 & 1 & 0 & 2 & 2 & 1 & 0 & 3\\
+$+$ & 3 & 7 & 0 & 7 & 7 & 2 & 7 & 2 & 2 & 1 & 3\\
+\hline
+& \textbf{5} & \textbf{9} & \textbf{0} & \textbf{7} & \textbf{8} & \textbf{2} & \textbf{9} & \textbf{4} & \textbf{3} & \textbf{1} & \textbf{6}
+\end{tabular}\end{center}
+	\noindent \emph{Note.} In fact we get $N=1$ which is cool.\\
+
+	\olivegreenhighligh{Establishing the Lower Bound.} We shall show that $|S|>4$. Suppose there exists a single digit number $d$ such that $s_1+s_2\not\equiv d\pmod{10}$ for each $(s_1, s_2)\in S\times S$ then we will not be able to generate
+$$\underbrace{\overline{\text{**}\ldots\text{*}d}}_{\text{take sufficiently large number}}$$as a sum of $a,b$. Hence it must be that,
+$$\{s_1+s_2\pmod{10} \mid s_1,s_2\in S\}=\mathbb{Z}_{10}\quad\text{meaning,}\quad \binom{|S|}{2}+|S|\ge 10.$$From the above mentioned bound it is quite clear that $|S|\ge 4$, so we are left to show that $|S|\ne 4$. Suppose $S=\{s_1,s_2,s_3,s_4\}$, notice $2s_i\pmod {10}$ generates four distinct even numbers among $\mathbb{Z}_{10}$. So either exactly one element of $S$ is even or all are odd, the latter implies $s_i+s_j$ is even for $i\ne j$ meaning the number of even numbers generated exceeds $10/2$ which is ridiculous. Similarly, we argue that the former case is also not possible, therefore $|S|>4$ and we are done. $\qedwhite$
+
+	\end{solution}
+\end{problem}
+	
+
+\begin{problem}{4}{\href{https://artofproblemsolving.com/community/c6h62176p35923955}{IMO P5, 1989}}
+	Prove that for every positive integer $n$, theree exists $n$ consecutive positive integers such that noe of them is a power of a prime.
+	\begin{solution} Consider $2n$ parwise distinct primes $p_i$. Consider the system of equations such that,
+		\begin{align*}
+			a &\equiv -1\pmod {p_1p_2}\\
+			a &\equiv -2\pmod {p_3p_4}\\
+			& \vdotswithin{\equiv}\\
+			a &\equiv -n\pmod {p_{2n-1}p_{2n}}.
+		\end{align*}
+	\indent We are done is we are able to find a solution for the above system of equations. Voilà!! by \textcolor{blue}{\textbf{Chinese Remainder theorem}} such an $a$ exists. $\qedwhite$
+	\end{solution}
+\end{problem}
+
+\begin{problem}{5}{\href{https://artofproblemsolving.com/community/c5h404354p2254810}{USAMO P4, 2011}}
+	Consider the assertion that for each positive integer $n\ge 2$, the remainder upon dividing $2^{2^n}$ by $2^n-1$ is a power of $4$. Either prove the assertion or find (with proof) a counterexample.
+	\begin{solution}
+
+	\end{solution}
+\end{problem}
