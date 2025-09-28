@@ -26,7 +26,7 @@ A $\pm 1$-sequence is a sequence of $2022$ numbers $a_1, \ldots, a_{2022},$ each
 Constructing a sequence that gives an upper bound of $506$ on $C$ is very natural. Consider the sequence,
 $$\textcolor{blue}{1},\textcolor{blue}{1}, \textcolor{red}{-1}, \textcolor{red}{-1}, \textcolor{blue}{1},\textcolor{blue}{1}, \textcolor{red}{-1}, \textcolor{red}{-1},\ldots, \textcolor{blue}{1},\textcolor{blue}{1}, \textcolor{red}{-1}, \textcolor{red}{-1},\textcolor{blue}{1}, \textcolor{red}{-1}.$$There are $505$ copies of $1,1,-1, -1$ chunks with an anomaly at the end. Say we want to maximise the number of $1$s in the list, then we must have at least $507$ more $1$s than $-1$s and this is impossible as appending a $1$ in our list comes at the cost of appending a $-1$ unless we are yet to start.\\
 
-	\olivegreenhighlight{Establishing The Lower bound on $C$} We will show that no matter what $a_1,a_2,\ldots, a_{2022}$ are, we can always achieve
+	\olivegreenhighlight{Establishing The Lower bound on $C$.} We will show that no matter what $a_1,a_2,\ldots, a_{2022}$ are, we can always achieve
 $$\left|\sum_{1\le i\le k}a_{t_i}\right|\ge 506 \qquad\text{with $t_{i+1}-t_i\le 2$,}$$for some $k$. Say there are at least $1011$ ones in the sequence and we want to include all of it in the list i.e, $a_{t_1}, a_{t_2}, \ldots, a_{t_k}.$ We do so according to the following algorithm,
 	\begin{itemize}
 		\item Begin from the smallest index that contains a $1$ and append it to the list.
