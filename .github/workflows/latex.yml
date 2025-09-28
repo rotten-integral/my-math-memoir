@@ -27,9 +27,10 @@ jobs:
           path: My_Math_Memoir.pdf
       
       - name: Commit and Push PDF to Repository
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add -f My_Math_Memoir.pdf
-          git commit -m "Build PDF from LaTeX update" || echo "No changes to commit"
-          git push
+    run: |
+    	git config user.name 'github-actions[bot]'
+    	git config user.email 'github-actions[bot]@users.noreply.github.com'
+    	git pull --rebase origin main || true
+    	git add -f My_Math_Memoir.pdf 
+    	git commit -m "Build PDF from LaTeX update" || echo "No changes to commit"
+    	git push
