@@ -1,0 +1,31 @@
+\section{Number Theory Flavoured Functional Equations}
+\subsection{Problems}
+\begin{problem}{1}{\href{https://artofproblemsolving.com/community/q2h2529938p34791441}{USAJMO P1, 2021}}
+	Let $\mathbb{N}$ denote the set of positive integers. Find all functions $f : \mathbb{N} \rightarrow \mathbb{N}$ such that for positive integers $a$ and $b,$\[f(a^2 + b^2) = f(a)f(b) \text{ and } f(a^2) = f(a)^2.\]
+\end{problem}
+
+\newpage
+\subsection{Solutions}
+\begin{problem}{1}{\href{https://artofproblemsolving.com/community/q2h2529938p34791441}{USAJMO P1, 2021}}
+	Let $\mathbb{N}$ denote the set of positive integers. Find all functions $f : \mathbb{N} \rightarrow \mathbb{N}$ such that for positive integers $a$ and $b,$\[f(a^2 + b^2) = f(a)f(b) \text{ and } f(a^2) = f(a)^2.\]
+	\begin{solution} We claim that $f\equiv 1$, easy to check why it works and we shall show that it is the only solution.\\
+Let us evaluate $f$ at first few points to build some intuition. Putting $a=1$ in $f(a^2)=(f(a))^2$, we get $f(1)=1$ and put $a=1$ in $f(2a^2)=(f(a))^2$ to get $f(2)=1$. Repeating these steps multiple times, we arrive at,
+$$f(1)=f(2)=f(3)=f(4)=f(5)=1.$$Computing $f(3)=1$ is slightly tricky, one might have to use the fact that $3^2+4^2=5^2$ (this gives us the hint that the problem might have something to do with Pythagorean triplets). So, we are somewhat convinced that $f\equiv 1$.
+Let us setup a strong induction argument, assume $f(n)=1$ whenever $n\le N$ for some natural $N\ge 5$. We will show that $f(N+1)=1$. To do so we will use a famous result regarding \bluehighlight{Primitive Pythagorean Triplets}.
+		\begin{theorem}{1}{Primitive Pythagorean Triplets} A triple of integers $(x,y,z)$ is a primitive Pythagorean triple if and only if $x=r^2-s^2$, $y=2rs$ and $z=r^2+s^2$, where $r,s$ are arbitrary integers of opposite parity $r>s>0$ and $\gcd(r,s)=1$.
+	\end{theorem}
+	For further details, refer section $5.3$ of An Introduction to the Theory of Numbers authored by Ivan Niven, Herbert S. Zuckerman and Hugh L. Montgomery.\\
+
+	\begin{mycases}
+		\item When $N+1$ is odd.\\
+		In reference to theorem $1$, setting $s=r-1$ we have have $r^2-(r-1)^2=N+1$ for some $r\le N$. By our induction hypithesis, we know that,
+		$$f((r^2-s^2)^2+(2rs)^2)=f(r^2-s^2)f(2rs)=f(r^2+s^2)=f(r)f(s)=1.$$So $f(r^2-(r-1)^2)=f(N+1)=1$ as desired.
+
+		\item When $N+1$ is even.\\
+		Similar in spirit as that of case $1$, there exists $r,s$ with $2rs=N+1$. Again by our induction hypothesis, we have,
+		$$f((r^2-s^2)^2+(2rs)^2)=f(r^2-s^2)f(2rs)=f(r^2+s^2)=f(r)f(s)=1.$$Clearly, $f(2rs)=f(N+1)=1$.
+	\end{mycases}
+
+	\noindent This completes our induction argument, giving us $f\equiv 1$ as desired. $\qedwhite$
+	\end{solution}
+\end{problem}
