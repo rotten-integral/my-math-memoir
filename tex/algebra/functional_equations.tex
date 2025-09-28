@@ -1,0 +1,30 @@
+\chapter{Algebra}
+\section{Functional Equations}
+\subsection{Problems}
+\begin{problem}{1}{\href{https://otis.evanchen.cc/arch/19IDOTSJ1/}{$\infty$ $\cdot$ MO 2019}}
+		Let $\mathbb{Z}_{>1}=\{2,3,\ldots\}$. Decide if there exists a function $f:\mathbb{Z}_{>1}\to \mathbb{Z}_{>1}$ which obeys the identity
+		$$f^{f(n)}(m)=m^n$$
+		for all positive integers $m$ and $n$ greater than $1$.
+\end{problem}
+
+\newpage
+\subsection{Solutions}
+\begin{problem}{1}{\href{https://otis.evanchen.cc/arch/19IDOTSJ1/}{$\infty$ $\cdot$ MO 2019}}
+		Let $\mathbb{Z}_{>1}=\{2,3,\ldots\}$. Decide if there exists a function $f:\mathbb{Z}_{>1}\to \mathbb{Z}_{>1}$ which obeys the identity
+		$$f^{f(n)}(m)=m^n$$
+		for all positive integers $m$ and $n$ greater than $1$.
+		\begin{solution} We claim no such function exists.\\
+		Let's suppose there exists such a function from now on.
+
+		\begin{claim}
+			$f$ is an exponential function.
+		\end{claim}
+		\begin{proof} 
+    It's evident that all perfect powers are contained in $\text{im}f$.\footnote{Then somehow it came to me to use the fact that $8$ and $9$ are consecutive perfect powers.} So there exists $n_1, n_2\in\mathbb{Z}_{>1}$ such that $f(n_1)=8$ and $f(n_2)=f(n_1)+1=9$. We then have,
+			$$m^{f(n_2)}=f(m^n)=f^{f(n_1)+1}(m)=f(m)^{f(n_1)}.$$
+		Thus the result follows.
+    \end{proof}
+
+	\indent But exponential functions induces size issues i.e, $f^{f(n)}(m)$ will be much larger than $m^n$ which is a contradiction and we are done. $\qedwhite$
+  \end{solution}	
+\end{problem}
