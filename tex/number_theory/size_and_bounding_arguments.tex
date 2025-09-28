@@ -1,0 +1,78 @@
+\section{Size And Bounding Arguments}
+\subsection{Problems}
+\begin{problem}{1}{\href{https://artofproblemsolving.com/community/c6h1480723p34885693}{IMO Shortlist N1, 2016}}	
+	For any positive integer $k$, denote the sum of digits of $k$ in its decimal representation by $S(k)$. Find all polynomials $P(x)$ with integer coefficients such that for any positive integer $n \geq 2016$, the integer $P(n)$ is positive and$$S(P(n)) = P(S(n)).$$
+\end{problem}
+
+\begin{problem}{2}{\href{https://artofproblemsolving.com/community/c6h1770752p34739465}{India P3, 2019}} 
+	Let $m,n$ be distinct positive integers. Prove that
+	$$\gcd(m,n) + \gcd(m+1,n+1) + \gcd(m+2,n+2) \le 2|m-n| + 1. $$Further, determine when equality holds.
+\end{problem}
+
+\newpage
+\subsection{Solutions}
+\begin{problem}{1}{\href{https://artofproblemsolving.com/community/c6h1480723p34885693}{IMO Shortlist N1, 2016}}	
+	For any positive integer $k$, denote the sum of digits of $k$ in its decimal representation by $S(k)$. Find all polynomials $P(x)$ with integer coefficients such that for any positive integer $n \geq 2016$, the integer $P(n)$ is positive and$$S(P(n)) = P(S(n)).$$
+	\begin{solution} We claim that is either $P(x)=x$ or $P(x)=c$ with $c=1,\ldots, 9$, which are easy to verify.\\
+	\indent Now, we shall show that these are the only solutions. The key insight to the problem is the fact that $S(n)$ is very small compared t\noindent Here are some of my recent solves from combinatorics which are majorly from olympiads.o $n$ for sufficiently large $n$ (more precisely, it is bounded above by a logarithmic function which grows very slowly) and the entire solution is more or less based on this observation. Firstly let's see what can we tell about $P$, can $\deg P$ be arbitrary? For convenience let Let $P(x)=\sum_{0\le i\le d}a_ix^i$ where $d=\deg P$.
+	\begin{numclaim}{1}
+		$d\le 1$.
+	\end{numclaim}
+	\begin{proof} Using the fact that $S(n)\le 9\lceil \log_{10}n\rceil$, we have the following,
+$$9\lceil \log_{10}P(\underbrace{99\cdots9}_{\text{$\ell$ $9$s}})\rceil\ge S(P(99\cdots 9))=P(S(99\cdots 9))=P(9\ell).$$For a sufficiently large $\ell$. Let's find a very convenient upper bound for $P$ , convenient meaning the one that behaves well inside logarithmic functions. A very natural one is
+$$(d+1)\max_{0\le i\le d}\{a_i\}x^d\ge P(x)\qquad\text{when $x\ge 1$}.$$Call the messy constant in front of $x^d$ as $K$. Recall that $9\lceil \log_{10}P(99\cdots 9)\rceil\ge P(9\ell)$, so the bound simplifies as,
+\begin{align*}
+ 9d\underbrace{\lceil \log_{10}99\cdots 9\rceil}_{\text{$\ell$}}+ 9\lceil \log_{10}K\rceil & \ge 9\lceil \log_{10}P(10^{\ell}-1)\rceil\\
+& \ge \sum_{0\le i\le d}a_i(9\ell)^i.
+\end{align*}It's not hard to see why the leading coefficient of $P$ must positive so taking sufficiently large $\ell$, the above does not hold when $d>1$ and hence the claim.
+	\end{proof}
+
+	\indent Now we are only left with the cases when $d=0,1$. The case when $d=0$ is trivial, so we are only interested in the other case. Using similar ideas as before, we know that $9\lceil \log_{10}2n\cdot\max\{a_0,a_1\}\rceil\ge S(n)a_1+a_0$. Again we put $n=99\cdots 9$ and we have,
+\begin{align*}
+9\lceil \log_{10}2\times 99\cdots9\rceil + 9\lceil \log_{10}\cdot\max\{a_0,a_1\}\rceil &=9\ell+9\lceil \log_{10}\cdot\max\{a_0,a_1\}\rceil \\
+&\ge 9\ell a_1+a_0.
+\end{align*}
+	If $a_1\ne 1$ we have a contradiction by taking sufficiently large $\ell$, therefore $a_1=1$. Somehow we need to force that $a_0=0$. Suppose $a_0>0$ (the case when $a_0<0$ is easy to rule out), as$$S(n+a_0)=S(n)+a_0,$$take $n$ such that $n+a_0$ is an extremely large power of $10$, meanwhile making $S(n)$ arbitrarily large. But this seems a bit off as $S(n+a_0)=1$ throughout the process whereas $S(n)+a_0$ is just getting bigger and bigger unless $a_0=0$ and we are done. $\qedwhite$
+
+	\end{solution}
+\end{problem}
+	
+\begin{problem}{2}{\href{https://artofproblemsolving.com/community/c6h1770752p34739465}{India P3, 2019}} 
+	Let $m,n$ be distinct positive integers. Prove that
+	$$\gcd(m,n) + \gcd(m+1,n+1) + \gcd(m+2,n+2) \le 2|m-n| + 1. $$Further, determine when equality holds.
+	\begin{solution} We claim that the equality holds only when $m,n$ are either consecutive integers or are consecutive even numbers. Easy to check these work and by the end of the solution we shall conclude that these are the only cases. Not to mention we shall also prove the given bound.\\
+	By Euclid's algorithm and repeatedly using the fact that $\gcd(a,b)\le \min(|a|, |b|)\le \max(|a|, |b|)$ we have,
+	\begin{align*}
+		\gcd(m,n) + \gcd(m+1,n+1) + \gcd(m+2,n+2) & = \gcd(m-n,n)+\gcd(m-n,n+1)\\
+		&\hspace{1cm}+ \gcd(m-n,n+2)\\
+		&\le  |m-n|+ \frac{|m-n|}{\gcd(m,n)}\\
+		&\hspace{0.5cm}+\frac{2|m-n|}{\gcd(m,n)\cdot\gcd(m+1, n+1)}.
+	\end{align*}
+	\indent We shall now deal with cases $\gcd(m,n)=1$, $\gcd(m+1,n+1)=1$ and combinations of these one at a time. To be honest, most of our work is done by this bound as the rest it just plugging things into it.\\
+
+	\begin{mycases}
+		\item $\gcd(m,n)=1$ and $\gcd(m+1, n+1)>1$. Clearly from the previously established bound we have,
+		\begin{align*}
+			\gcd(m,n) + \gcd(m+1,n+1) + \gcd(m+2,n+2) &\le 1+|m-n|+\frac{2|m-n|}{2}\\
+			&= 2|m-n|+1.
+		\end{align*}
+		One might see that for the above to hold it must be that $\gcd(m-n, n+1)=|m-n|$ meaning $m-n\lvert (n+1)$. Similarly $m-n\lvert (n+2)$ which is only possible when $|m-n|=1$. In other words, $m$ and $n$ are consecutive.
+
+		\item $\gcd(m, n)>1$ and $\gcd(m+1, n+1)=1$. Following the same idea we used in the previous case we have,
+		\begin{align*}
+			\gcd(m,n) + \gcd(m+1,n+1) + \gcd(m+2,n+2) &\le |m-n|+1+\frac{2|m-n|}{2}\\
+			&= 2|m-n|+1.
+		\end{align*}
+		We know that $n-m\lvert n$ and $n-m\lvert (n+2)$ which is only true when $|m-n|$. Hence $m$ and $n$ are consecutive even numbers.\\
+
+		\item $\gcd(m, n)>1$ and $\gcd(m+1, n+1)>1$. At this point its just mechanical oof,
+		\begin{align*}
+			\gcd(m,n) + \gcd(m+1,n+1) + \gcd(m+2,n+2) &\le |m-n|+\frac{|m-n|}{2}+\frac{2|m-n|}{4}\\
+			&= 2|m-n|.
+		\end{align*}
+		Clearly equality does not hold in this case.
+	\end{mycases}
+	
+	\noindent Our initial claim holds and we are done. $\qedwhite$
+	\end{solution}
+\end{problem}
