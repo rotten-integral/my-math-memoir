@@ -12,6 +12,7 @@
 \usepackage{fancyhdr}                  
 \usepackage{mathrsfs}                  
 \usepackage{enumitem}
+\usepackage{pifont}
 
 % ---<<For tcolorbox skins like "standard-jigsaw">>---
 \tcbuselibrary{skins}
@@ -166,7 +167,7 @@
 
 % ---<<Highlight Commands>>---
 \newcommand{\bluehighlight}[1]{\textbf{\textcolor{blue}{#1}}}
-\newcommand{\olivegreenhighlight}[1]{\textbf{\textcolor{darkolivegreen}{#1}}}
+\newcommand{\olivegreenhighlight}[1]{\par\noindent\textbf{\textcolor{darkolivegreen}{\ding{161} #1.$\hspace{1mm}$}}}
 
 
 % ---<<Problem Environment>>---
