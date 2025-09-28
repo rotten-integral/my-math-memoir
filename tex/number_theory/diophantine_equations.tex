@@ -1,0 +1,38 @@
+\section{Diophantine Equations}
+\subsection{Problems}
+\begin{problem}{1}{\href{https://artofproblemsolving.com/community/q3h2874609p34343404}{Junior Balkan Olympiad P3, 2022}}
+	Find all quadruples of positive integers $(p, q, a, b)$, where $p$ and $q$ are prime numbers and $a > 1$, such that$$p^a = 1 + 5q^b.$$
+\end{problem}
+
+
+\newpage
+\section{Solutions}
+\begin{problem}{1}{\href{https://artofproblemsolving.com/community/q3h2874609p34343404}{Junior Balkan Olympiad P3, 2022}}
+	Find all quadruples of positive integers $(p, q, a, b)$, where $p$ and $q$ are prime numbers and $a > 1$, such that$$p^a = 1 + 5q^b.$$
+	\begin{solution} We claim $(p,q,a,b)=(2,3,4,1),(3,2,4,4)$ are the only $4-$tuples.\\
+	Note that exactly one of $p,q$ must be $2$, we shall deal with it one at time.
+	\begin{myscases} 
+		\item $p=2$.\\
+One may notice, the last digit of $1+5q^b$ is always $6$, only $2^4,2^8,2^{12},\ldots$ have this property. More precisely, $2$ is a primitive root of $5$. Say $a=4k$ for some natural $k$ then
+$$16^{k}=1+5\times q^b\equiv 1\pmod{3}\qquad\text{which implies $q=3$}.$$
+	\indent By LTE we know that $\nu_3(16^k-1)=1+\nu_3(k)=b$. For $b\ge 2$ this clearly ain't true as $16^{3^{b-1}}>1+5\times 3^b$ and when $b=1$ we get the only solution as $(2,3,4,1)$.\\
+
+		\item $q=2$.\\
+	Our primary goal is to get the condition that $a$ is even, as it makes life easier while working under $\pmod{3}$. As $p^{a}\equiv 1\pmod{2^b}$ we know $\text{ord}_{2^b}(p)\lvert \gcd(a,\varphi(2^b))$. If $a$ was odd, $\text{ord}_{2^b}(p)=1$ but we have an issue with sizes, there exists a natural $k$ satisfying $p=1+k2^b$ and
+$$p^a=(1+k2^b)^a\ge k^{2}2^{2b}+k2^{b+1}+1>1+5\times 2^b\qquad\text{for sufficiently large $k,b$.}$$So $a$ is even, meaning $p^a\equiv 1,0\pmod{3}$. But $p^a\not\equiv 1\pmod{3}$ as  $p^a\equiv 1+5\times 2^b\equiv 0,2\pmod{3}$ we certainly know $p=3$. As $3$ is a primitive $\pmod{5}$ we deduce $a=4k$ for some natural $k$.
+	
+	\begin{theorem}{1}{LTE for $p=2$}
+		Let $x,y$ be odd integers such that $4|x-y$ then
+		$$\nu_2(x^n-y^n)=\nu_2(x-y)+\nu_2(n).$$
+	\end{theorem}
+	
+	Now by the annoying version of LTE for $2$, we have $\nu_2(81^k-1)=\nu_2(80)+\nu_2(k).$\\
+	But for $b>4$ we know
+$$81^{2^{b-4}}-1>5\times 2^b.$$
+Working through the finite cases of $b\le 4$ we have a solution only when $b=4$, so the only solution is $(3,2,4,4)$.\\
+	\end{mycases}
+	
+	\noindent And that altogether proves our initial claim. $\qedwhite$
+
+	\end{solution}
+\end{problem}
