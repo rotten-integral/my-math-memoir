@@ -10,14 +10,14 @@
 	\begin{solution} The answer is yes.
 		\par Let the eigen vectors be $v_i$ with corresponding eigen values $\lambda_i$ for $1\le i\le n+1$. Our goal is to show that all the eigen values are equal. It is evident that $\{v_1, v_2,\ldots, v_n\}$ forms a basis for $V$ as it is linearly independent and $\mathrm{dim} V=n$. Aha!! this means $v_{n+1}$ can be written as a linear combination of the basis, we then have,
 		\begin{align*}		
-			A\sum_{1\le i\le n}s_i\{v}_i&=\sum_{1\le i\le n}s_iA \{v}_i\\
-			&=\sum_{1\le i\le n}s_i\lambda_i\{v}_i\\
-			&=A\{v}_{n+1}\\
-			&=\lambda_{n+1}\{v}_{n+1}\\
-			&=\lambda_{n+1}\sum_{1\le i\le n}s_{i}\{v}_i,
+			A\sum_{1\le i\le n}s_iv_i&=\sum_{1\le i\le n}s_iA v_i\\
+			&=\sum_{1\le i\le n}s_i\lambda_iv_i\\
+			&=Av_{n+1}\\
+			&=\lambda_{n+1}v_{n+1}\\
+			&=\lambda_{n+1}\sum_{1\le i\le n}s_{i}v_i,
 		\end{align*}
 		for some scalars $s_1,s_2,\ldots, s_{n}\in\mathbb{F}$. From the above we know that,
-		$$\sum_{1\le i\le n}s_i\lambda_i\{v}_i=\lambda_{n+1}\sum_{1\le i\le n}s_{i}\{v}_i\quad\implies\quad\sum_{1\le i\le n}s_i(\lambda_i-\lambda_{n+1})\{v}_i=0.$$
-		But as $\{\{v}_1,\ldots, \{v}_n\}$ is linearly independent, it follows that all the eigen values must be equal as desired. $\qedwhite$	
+		$$\sum_{1\le i\le n}s_i\lambda_iv_i=\lambda_{n+1}\sum_{1\le i\le n}s_{i}v_i\quad\implies\quad\sum_{1\le i\le n}s_i(\lambda_i-\lambda_{n+1})v_i=0.$$
+		But as $\{v_1,\ldots, v_n\}$ is linearly independent, it follows that all the eigen values must be equal as desired. $\qedwhite$	
 	\end{solution}
 \end{problem}
