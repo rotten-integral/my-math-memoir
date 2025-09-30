@@ -1,0 +1,27 @@
+\chapter{Real Analysis}
+\subsection{Problems}
+\begin{problem}{1}{\href{https://artofproblemsolving.com/community/q1h1127671p33458391}{Vojt\v{e}ch Jarnik IMC Cat I P2, 2015}}
+	Consider the infinite chessboard whose rows and columns are indexed by positive integers. Is it possible to put a single positive rational number into each cell of the chessboard so that each positive rational number appears exactly once and the sum of every row and of every column is finite?
+\end{problem}
+
+
+
+\newpage
+\subsection{Solutions}
+\begin{problem}{1}{\href{https://artofproblemsolving.com/community/q1h1127671p33458391}{Vojt\v{e}ch Jarnik IMC Cat I P2, 2015}} Consider the infinite chessboard whose rows and columns are indexed by positive integers. Is it possible to put a single positive rational number into each cell of the chessboard so that each positive rational number appears exactly once and the sum of every row and of every column is finite?
+	\begin{solution} Yes, there is such a construction and we will see one of them in this solution.\\
+		\indent The key idea is to dump all the ``unwanted numbers'' on the main diagonal.\\
+	Let $\phi:\mathbb{Z}_{>0}\times\mathbb{Z}_{>0}\to \mathbb{Q}_{>0}$ denote the function that maps any square on the chessboard to the number written on it. Define a set 
+		$$S=\Big\{\frac{1}{2^m3^n}\mid m\ne n \text{ and } m,n\in\mathbb{Z}_{>0}\Big\}.$$
+
+	\begin{numclaim}{1}
+		$\mathbb{Z}_{>0}\sim \mathbb{Q}_{>0}\setminus S$.
+	\end{claim}
+	\begin{proof} Similar to the proof which shows $\mathbb{Z}_{>0}\sim \mathbb{Q}_{>0}$ $-$ refer \emph{Stephen Abbot, Understanding Analysis, Springer, section 1.4.}
+	\end{claim}
+	\noindent By claim 1 we can place all the members of $\mathbb{Q}_{>0}\setminus S$ on the main diagonal.\\
+	Now, we shall deal with the squares not on the main diagonal. Consider the following construction
+$$(m, n )\xmapsto{\phi} \cfrac{1}{2^m3^n}\quad \text{where $m\ne n$}.$$
+	\noindent It's easy to see that the sum in each of the rows and columns converge, and as $\phi$ is a bijective map, it is a valid construction.$\qedwhite$
+	\end{solution}
+\end{problem}
