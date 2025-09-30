@@ -8,6 +8,12 @@
 	Let $\mathbb{N}$ be the set of positive integers. Determine all functions $f:\mathbb{N}\to\mathbb{N}$ such that $a^2+f(a)f(b)$ is divisible by $f(a)+b$ for all positive integers $a,b$.
 \end{problem}
 
+\begin{problem}{3}{\href{https://artofproblemsolving.com/community/c6h597243p3544096}{IMO Shortlist N1, 2013}}
+	Let $\mathbb{Z} _{>0}$ be the set of positive integers. Find all functions $f: \mathbb{Z} _{>0}\rightarrow \mathbb{Z} _{>0}$ such that
+\[ m^2 + f(n) \mid mf(m) +n \]
+for all positive integers $m$ and $n$.
+\end{problem}
+
 \newpage
 \subsection{Solutions}
 \begin{problem}{1}{\href{https://artofproblemsolving.com/community/q2h2529938p34791441}{USAJMO P1, 2021}}
@@ -55,5 +61,21 @@ Let us setup a strong induction argument, assume $f(n)=1$ whenever $n\le N$ for 
 		But making $p$ sufficiently large contradicts the above unless $f(a)-a=0$ and we are done. $\qedwhite$
 	\end{solution}
 \end{problem}
+
+\begin{problem}{3}{\href{https://artofproblemsolving.com/community/c6h597243p3544096}{IMO Shortlist N1, 2013}}
+	Let $\mathbb{Z} _{>0}$ be the set of positive integers. Find all functions $f: \mathbb{Z} _{>0}\rightarrow \mathbb{Z} _{>0}$ such that
+\[ m^2 + f(n) \mid mf(m) +n \]
+for all positive integers $m$ and $n$.
+	\begin{solution}
+		We claim that $f=\mathrm{id}$ is the only solution and can be checked easily.\\
+		Now, we proceed to show that this is the only solution. Begin by substituting $m$ with $f(n)$ by which we have,
+		\[f(n)f\circ f(n)+n\equiv 0\pmod {f(n)^2+f(n)}.\]
+		\indent And as $\gcd(f(n), f(n)+1)=1$, it follows that $f(n)\lvert n$ (we have a clear bound, $f(n)\le n$). This instantly yields $f(1)=1$. Now we finish off by by substituting $n$ with $1$ in the intitial condition, so,
+		\[mf(m)+1 \equiv 0\pmod{m^2+1}.\]
+		But this is only possible when $f(m)\ge m$. Simultaneously, recall that $f(m)\le m$! thus yielding us the required. $\qedwhite$
+	\end{solution}
+\end{problem}
+	
+
 	
 
