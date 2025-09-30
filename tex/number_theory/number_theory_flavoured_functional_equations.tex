@@ -4,6 +4,10 @@
 	Let $\mathbb{N}$ denote the set of positive integers. Find all functions $f : \mathbb{N} \rightarrow \mathbb{N}$ such that for positive integers $a$ and $b,$\[f(a^2 + b^2) = f(a)f(b) \text{ and } f(a^2) = f(a)^2.\]
 \end{problem}
 
+\begin{problem}{2}{\href{https://artofproblemsolving.com/community/c6h1854148p12519631}{APMO P1, 2019}}
+	Let $\mathbb{N}$ be the set of positive integers. Determine all functions $f:\mathbb{N}\to\mathbb{N}$ such that $a^2+f(a)f(b)$ is divisible by $f(a)+b$ for all positive integers $a,b$.
+\end{problem}
+
 \newpage
 \subsection{Solutions}
 \begin{problem}{1}{\href{https://artofproblemsolving.com/community/q2h2529938p34791441}{USAJMO P1, 2021}}
@@ -29,3 +33,27 @@ Let us setup a strong induction argument, assume $f(n)=1$ whenever $n\le N$ for 
 	\noindent This completes our induction argument, giving us $f\equiv 1$ as desired. $\qedwhite$
 	\end{solution}
 \end{problem}
+
+\begin{problem}{2}{\href{https://artofproblemsolving.com/community/c6h1854148p12519631}{APMO P1, 2019}}
+	Let $\mathbb{N}$ be the set of positive integers. Determine all functions $f:\mathbb{N}\to\mathbb{N}$ such that $a^2+f(a)f(b)$ is divisible by $f(a)+b$ for all positive integers $a,b$.
+	\begin{solution} We claim that $f=\text{id}$ is the only solution and it's easy check the validity.\\
+		\indent Now, we proceed to show that no other solution exists. The key idea in these kind of problems is to exploit divisibility constraints with the help of primes along with size arguments. And this intuition yields the following result.
+		
+		\begin{claim}
+			Given any prime $p$, it follows that $f(p)=p$.
+		\end{claim}
+		\begin{proof}
+			Let $p$ denote a prime. Now substituing $a$ and $b$ with $p$, we have,
+			\[p^2+f(p)^2\equiv 0\pmod{p+f(p)}\quad\text{implies}\quad 2pf(p)\equiv 0\pmod{p+f(p)} .\]
+			Now, we either have $\gcd(f(p), p)=p$ or $\gcd(f(p), p)=1$ and readily the latter is infered as ridiculuos. Which leaves us with the only possibility,
+			\[2f(p)\equiv 0\pmod{1+\tfrac{f(p)}{p}}.\]
+			Evidently, $1+\tfrac{f(p)}{p}$ shares a common factor with neither $f(p)$ nor $p$ yielding $f(p)=p$ as desired.
+		\end{proof}
+		
+		\noindent Consider a prime $p$. From the hypothesis, we have for any $a$, that $p+a\lvert p^2+pf(a)$ and by cancellation rule it follows that,
+		\[p+f(a)+a-a\equiv 0\pmod {p+a}\quad\text{or}\quad f(a)-a\equiv 0\pmod{p+a}.\]
+		But making $p$ sufficiently large contradicts the above unless $f(a)-a=0$ and we are done. $\qedwhite$
+	\end{solution}
+\end{problem}
+	
+
