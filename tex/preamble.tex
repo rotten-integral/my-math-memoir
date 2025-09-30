@@ -24,10 +24,10 @@
 % ---<<Fancy Header>>---
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[R]{\textgoth{My Math Memoir}}
-\fancyhead[L]{rotten $\int$ntegral}
+\fancyhead[R]{\textbb{My Math Memoir}}
+\fancyhead[L]{rotten $\int$ntegral \texttt{(Last Updated $-$ \today)}}
 \fancyfoot[R]{Page \thepage}
-\fancyfoot[L]{\texttt{Last Updated $-$ \today}}
+\fancyfoot[L]{}
 
 % ---<<Colour Definitions>>---
 \definecolor{raspberry}{rgb}{0.89, 0.04, 0.36}
@@ -95,6 +95,22 @@
 	title={Theorem #1 \textmd{(#2)}.$\hspace{1mm}$}
 }
 
+% ---<<Theorem Box - With no title>>---
+\newtcolorbox{notitthm}[1]{%
+	colback=turquoiseblue!5!white,
+	colframe=ultramarine!90!black,
+	coltitle=ultramarine!90!black,
+	fonttitle=\bfseries,
+	colbacktitle=turquoiseblue!5!white,
+	boxrule=0.5pt,
+	arc=4pt,
+	enhanced,
+	attach title to upper,
+	title={Theorem #1.$\hspace{1mm}$}
+}
+
+
+
 % ---<<Lemma Box>>---
 \newtcolorbox{lemma}[1]{%
 	colback=peach-orange!10!white,
@@ -104,7 +120,7 @@
 	colbacktitle=peach-orange!10!white,
 	enhanced,
 	boxrule=0.5pt,
-	sharp corners,
+	acr=4pt,
 	attach title to upper,
 	title={Lemma #1.$\hspace{1mm}$}
 }
@@ -118,7 +134,7 @@
 	colbacktitle=peach-orange!10!white,
 	enhanced,
 	boxrule=0.5pt,
-	sharp corners,
+	arc=4pt,
 	attach title to upper,
 	title={Proposition #1.$\hspace{1mm}$}
 }
