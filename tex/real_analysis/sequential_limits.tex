@@ -1,0 +1,106 @@
+\section{Sequential Limits}
+\subsection{Problems}
+\begin{problem}{1}{\href{https://artofproblemsolving.com/community/c7h3523176p34221514}{Romania Grade 11 P1, 2025}}
+	Consider the sequence $(a_n)_{n\geq 1}$ given by $a_1=1$ and $a_{n+1}=\frac{a_n}{1+\sqrt{1+a_n}}$, for all $n\geq 1$. Show that$$\lim_{n\rightarrow\infty}\frac{a_{n+1}}{a_n} = \lim_{n\rightarrow\infty}\sum_{k=1}^n \log_2(1+a_k)=\cfrac{1}{2}.$$
+\end{problem}
+
+\begin{problem}{2}{\href{https://artofproblemsolving.com/community/q2h1349017p34784424}{Putnam A2, 2016}} Given a positive integer $n,$ let $M(n)$ be the largest integer $m$ such that
+	\[\binom{m}{n-1}>\binom{m-1}{n}.\]
+	Evaluate $\lim_{n\to\infty}\frac{M(n)}{n}.$
+\end{problem}
+
+\begin{problem}{3}{\href{https://artofproblemsolving.com/community/q1h1349023p34703591}{Putnam B1, 2016}} 
+	Let $x_0,x_1,x_2,\dots$ be the sequence such that $x_0=1$ and for $n\ge 0,$
+	\[x_{n+1}=\ln(e^{x_n}-x_n)\](as usual, the function $\ln$ is the natural logarithm). Show that the infinite series
+	\[x_0+x_1+x_2+\cdots\]converges and find its sum.
+\end{problem}
+
+\begin{problem}{4}{\href{https://artofproblemsolving.com/community/c6h1472062p8547108}{ELMO SL 2017}} Let $0<k<\frac{1}{2}$ be a real number and let $a_0, b_0$ be arbitrary real numbers in $(0,1)$. The sequences $(a_n)_{n\ge 0}$ and $(b_n)_{n\ge 0}$ are then defined recursively by
+		$$a_{n+1} = \dfrac{a_n+1}{2} \quad\text{and}\quad b_{n+1} = b_n^k$$
+		for $n\ge 0$. Prove that $a_n<b_n$ for all sufficiently large $n$.
+\end{problem}
+
+
+
+\newpage
+\subsection{Solutions}
+\begin{problem}{1}{\href{https://artofproblemsolving.com/community/c7h3523176p34221514}{Romania Grade 11 P1, 2025}}Consider the sequence $(a_n)_{n\geq 1}$ given by $a_1=1$ and $a_{n+1}=\frac{a_n}{1+\sqrt{1+a_n}}$, for all $n\geq 1$. Show that$$\lim_{n\rightarrow\infty}\frac{a_{n+1}}{a_n} = \lim_{n\rightarrow\infty}\sum_{k=1}^n \log_2(1+a_k)=\cfrac{1}{2}.$$
+	\begin{solution} (Courtesy: \texttt{@grupyorum}) We have
+\[
+a_{n+1} = \frac{a_n}{1+\sqrt{1+a_n}} = \sqrt{1+a_n}-1,
+\]implying that $b_{n+1} = \sqrt{b_n}$ for $b_n:=a_n+1$ with $b_1=2$. This immediately yields $b_{n+1} = 2^{1/2^n}$. So, $1 = \textstyle \lim_{n\to\infty}b_n = 1+\lim_{n\to\infty}a_n$, i.e., $\textstyle \lim_{n\to\infty}a_n =0$. This immediately yields:
+\[
+\lim_{n\to\infty}\frac{a_{n+1}}{a_n} = \lim_{n\to\infty} \frac{1}{1+\sqrt{1+a_n}} = \frac{1}{2}.
+\]As for the second equality, we have $b_1:=2$ and
+\[
+\sum_{k=1}^n \log_2 b_k = \log_2 b_1 \left(1+\cdots+\frac{1}{2^{n-1}}\right) \to \frac{1}{2}
+\]as $n\to\infty$.$\qedwhite$
+	\end{solution}
+\end{problem}
+	
+\begin{problem}{2}{\href{https://artofproblemsolving.com/community/q2h1349017p34784424}{Putnam A2, 2016}} Given a positive integer $n,$ let $M(n)$ be the largest integer $m$ such that
+	\[\binom{m}{n-1}>\binom{m-1}{n}.\]
+	Evaluate $\lim_{n\to\infty}\frac{M(n)}{n}.$
+	\begin{solution} The answer is $\lim_{n\to\infty}\tfrac{M(n)}{n}=\tfrac{3+\sqrt{5}}{2}.$\\
+	\indent Surprisingly, it is not hard to come up with an explicit formula for $M(n)$. Now, doing the most natural thing that is to simplify the given inequality we get,
+	$$m^2-m(3n-1)+n^2-n<0.$$
+	Treating this as a quadratic expression in $m$, we can give a bound on possible values of $m$ that satisfy the inequality i.e,
+$$\cfrac{3n-1-\sqrt{5n^2-2n+1}}{2}\le m\le \cfrac{3n-1+\sqrt{5n^2-2n+1}}{2}.$$
+	\indent As we are interested in the greatest possible value of $m$, $M(n)$ can be simply given by the formula,
+		
+	\begin{align*}
+		M(n) &=\left\lfloor\cfrac{3n-1+\sqrt{5n^2-2n+1}}{2}\right\rfloor\\
+		&=\cfrac{3n-1+\sqrt{5n^2-2n+1}}{2}-\left\{\cfrac{3n-1+\sqrt{5n^2-2n+1}}{2}\right\}.
+	\end{align*}
+	\noindent Aha! the limit is easy to compute. As the fractional part is bounded above by $1$ and below by $0$, when divided by $n$ makes no contribution to the limit and hence,
+	\begin{align*}
+		\lim_{n\to\infty}\cfrac{M(n)}{n}&=\lim_{n\to\infty}\cfrac{3n-1+\sqrt{5n^2-2n+1}}{2n}-\cfrac{1}{n}\left\{\cfrac{3n-1+\sqrt{5n^2-2n+1}}{2}\right\}\\
+		&=\cfrac{3+\sqrt{5}}{2}.
+	\end{align*}
+	We are done. $\qedwhite$
+	\end{solution}
+\end{problem}
+
+\begin{problem}{3}{\href{https://artofproblemsolving.com/community/q1h1349023p34703591}{Putnam B1, 2016}} Let $x_0,x_1,x_2,\dots$ be the sequence such that $x_0=1$ and for $n\ge 0,$
+\[x_{n+1}=\ln(e^{x_n}-x_n)\](as usual, the function $\ln$ is the natural logarithm). Show that the infinite series
+\[x_0+x_1+x_2+\cdots\]converges and find its sum.
+	\begin{solution} We claim that $s_n\to e-1$. Where $s_n$ denotes the partial sum $s_n=x_0+x_1+\cdots+x_n$.
+Bruh this $\ln$ seems to annoy us so we rewrite $x_{n+1}=\ln (e^{x_n}-x_n)$ as, $e^{x_{n+1}}=e^{x_n}-x_n.$ Let us write few equations in this manner namely,
+\begin{align*}
+		e^{x_{n+1}}&=e^{x_n}-x_n.\\
+		e^{x_{n}}&=e^{x_{n-1}}-x_{n-1}.\\
+		&\vdotswithin{=}\\
+		e^{x_1}&=e^{x_0}-x_0.
+	\end{align*}
+	Aha! adding all of the above equation yields us,
+$$\sum_{0\le i\le n}e^{x_i}-\sum_{1\le i\le n+1}e^{x_i}=e-e^{x_{n+1}}=s_n.$$This result gives us a hint that in order to prove the convergence of $s_n$, we might want to prove the convergence of $x_n$ first.
+	\begin{claim}
+	$x_n\to 0.$
+	\end{claim}
+	\begin{proof} Begin by noticing that $(x_n)_{n\ge 0}$ is bounded below by $0$ as the function $\ln(e^x-x)$ can take the least value of $0$ over $\mathbb{R}$. Also one might see that $\Delta x_n<0$ hence by \bluehighlight{Monotone Convergence Theorem} we say $(x_n)_{n\ge 0}$ converges to a point a say $\ell$. Computing the value of $\ell$ is easy as we have previously seen that $e^{x_{n+1}}=e^{x_n}-x_n$ meaning $e^{\ell}=e^{\ell}-\ell$ which forces $x_n\to 0$.
+	\end{proof}
+
+	\noindent Recall that $e-e^{x_{n+1}}=s_n$, which implies $s_n\to e-1$. $\qedwhite$
+	\end{solution}
+\end{problem}
+
+\begin{problem}{4}{\href{https://artofproblemsolving.com/community/c6h1472062p8547108}{ELMO SL 2017}} Let $0<k<\frac{1}{2}$ be a real number and let $a_0, b_0$ be arbitrary real numbers in $(0,1)$. The sequences $(a_n)_{n\ge 0}$ and $(b_n)_{n\ge 0}$ are then defined recursively by
+		$$a_{n+1} = \dfrac{a_n+1}{2} \quad\text{and}\quad b_{n+1} = b_n^k$$
+		for $n\ge 0$. Prove that $a_n<b_n$ for all sufficiently large $n$.
+	\begin{solution} The key strategy is come up with an explicit formula for $a_n$ and $b_n$, from then on it's just cake walk.
+	\begin{claim}
+		Members of the sequences $(a_n)_{n\ge 0}$ and $(b_n)_{n\ge 0}$ are given by the formulas,
+		$$a_n=1+\cfrac{a_0-1}{2^n}\quad\text{and}\quad b_n=\text{exp}(k^n\log b_0),$$
+	respectively.
+	\end{claim}
+	\begin{proof} We first grab the low hanging fruit $-$ one can instantly notice $$b_n=b_0^{k^n}=\text{exp}(k^n\log b_0).$$ Using the recursive formula i.e, $2a_{n+1}=a_n+1$, we have,
+	$$2\sum_{n\ge 0}a_{n+1}X^n=\sum_{n\ge 0}a_nX^n+\sum_{n\ge 0}X^n.$$
+	Solving for the generating function of $(a_n)_{n\ge 0}$, yields,	$$\sum_{n\ge 0}a_nX^n=\cfrac{2a_0-2}{2-x}+\cfrac{1}{1-x}=(a_0-1)\sum_{n\ge 0}\left(\frac{X}{2}\right)^n+\sum_{b\ge 0}X^n.$$
+	So $a_n=1+\tfrac{a_0-1}{2^n}$ as desired.
+	\end{proof}
+
+	\indent Now, in order to compare $a_n$ and $b_n$, we establish a suitable lower bound for $b_n$ i.e,
+	$$b_n=\text{exp}(k^n\log b_0)> 1+k^n\log(b_0).$$
+	It suffices to show that $k^n\log b_0>\tfrac{a_0-1}{2^n}$ for all sufficiently large $n$. And this readily follows as $\lim_{n\to \infty}(2k)^n\log b_0=0$. $\qedwhite$ 
+	\end{solution}
+\end{problem}
