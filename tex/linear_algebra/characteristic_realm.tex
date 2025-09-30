@@ -8,7 +8,7 @@
 \begin{problem}{1}{\href{https://artofproblemsolving.com/community/u571929h1889881p35784025}{Putnam A6, 1988}}
 		Let $V$ be an $n-$dimensional vector space. Let $T:V\to V$ be a linear map and suppose there exists $n+1$ eigenvectors, any $n$ of which are linearly independent. Does it follow that $T$ is a scalar multiple of $\mathrm{id}_V$?
 	\begin{solution} The answer is yes.
-		\par Let the eigen vectors be $v_i$ with corresponding eigen values $\lambda_i$ for $1\le i\le n+1$. Our goal is to show that all the eigen values are equal. It is evident that $\{v_1, \v_2,\ldots, v_n\}$ forms a basis for $V$ as it is linearly independent and $\dim V=n$. Aha!! this means $\{v}_{n+1}$ can be written as a linear combination of the basis, we then have,
+		\par Let the eigen vectors be $v_i$ with corresponding eigen values $\lambda_i$ for $1\le i\le n+1$. Our goal is to show that all the eigen values are equal. It is evident that $\{v_1, v_2,\ldots, v_n\}$ forms a basis for $V$ as it is linearly independent and $\dim V=n$. Aha!! this means $\{v}_{n+1}$ can be written as a linear combination of the basis, we then have,
 		\begin{align*}		
 			A\sum_{1\le i\le n}s_i\{v}_i&=\sum_{1\le i\le n}s_iA \{v}_i\\
 			&=\sum_{1\le i\le n}s_i\lambda_i\{v}_i\\
