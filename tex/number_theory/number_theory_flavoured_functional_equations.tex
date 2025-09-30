@@ -43,9 +43,9 @@ Let us setup a strong induction argument, assume $f(n)=1$ whenever $n\le N$ for 
 			Given any prime $p$, it follows that $f(p)=p$.
 		\end{claim}
 		\begin{proof}
-			Let $p$ denote a prime. Now substituing $a$ and $b$ with $p$, we have,
+			Let $p$ denote a prime. Now substituting $a$ and $b$ with $p$, we have,
 			\[p^2+f(p)^2\equiv 0\pmod{p+f(p)}\quad\text{implies}\quad 2pf(p)\equiv 0\pmod{p+f(p)} .\]
-			Now, we either have $\gcd(f(p), p)=p$ or $\gcd(f(p), p)=1$ and readily the latter is infered as ridiculuos. Which leaves us with the only possibility,
+			Now, we either have $\gcd(f(p), p)=p$ or $\gcd(f(p), p)=1$ and readily the latter is inferred as ridiculous. Which leaves us with the only possibility,
 			\[2f(p)\equiv 0\pmod{1+\tfrac{f(p)}{p}}.\]
 			Evidently, $1+\tfrac{f(p)}{p}$ shares a common factor with neither $f(p)$ nor $p$ yielding $f(p)=p$ as desired.
 		\end{proof}
